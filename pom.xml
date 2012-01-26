@@ -78,4 +78,11 @@
 		</dependency>
 	</dependencies>
 
+	<scm>
+		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</connection>
+		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</developerConnection>
+		<url>http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</url>
+	</scm> 
+	
+	
 </project>

@@ -48,36 +48,42 @@ import javax.persistence.TemporalType;
 
 
 /**
- * Adaptater for paginated query
+ * Adaptater for paginated query.
  * 
  * @author abataille
  */
 public class PagedQuery implements Query
 {
 
-    private Query query;
-    private Query countQuery;
-    private PaginationProperties paginationProperties;
+    /** The _query. */
+    private Query _query;
+
+    /** The _count query. */
+    private Query _countQuery;
+
+    /** The _pagination properties. */
+    private PaginationProperties _paginationProperties;
 
     /**
      * Creates a new PaginatedQuery.java object.
+     * 
      * @param query query for getting results
      * @param countQuery query for counting total result
-     * @param paginationProperties
+     * @param paginationProperties the pagination properties
      */
     public PagedQuery( Query query, Query countQuery, PaginationProperties paginationProperties )
     {
         super( );
-        this.query = query;
-        this.countQuery = countQuery;
-        this.paginationProperties = paginationProperties;
+        this._query = query;
+        this._countQuery = countQuery;
+        this._paginationProperties = paginationProperties;
         
-        if ( this.paginationProperties != null )
+        if ( this._paginationProperties != null )
         {
 	        //Calculate pagination properties for query
-	        int maxResult = this.paginationProperties.getFirstResult( ) + this.paginationProperties.getPageSize( );
-	        this.query.setMaxResults( maxResult );
-	        this.query.setFirstResult( this.paginationProperties.getFirstResult( ) );
+	        int maxResult = this._paginationProperties.getFirstResult( ) + this._paginationProperties.getPageSize( );
+	        this._query.setMaxResults( maxResult );
+	        this._query.setFirstResult( this._paginationProperties.getFirstResult( ) );
         }
     }
 
@@ -88,11 +94,11 @@ public class PagedQuery implements Query
     {
         ResultList resultList = new ResultList( );
         Long nbTotalResults = -1L;
-        if ( this.countQuery != null )
+        if ( this._countQuery != null )
         {
-            nbTotalResults = (Long) this.countQuery.getSingleResult( );
+            nbTotalResults = (Long) this._countQuery.getSingleResult( );
         }
-        resultList.addAll( query.getResultList( ) );
+        resultList.addAll( _query.getResultList( ) );
         resultList.setTotalResult( nbTotalResults.intValue( ) );
         return resultList;
     }
@@ -102,7 +108,7 @@ public class PagedQuery implements Query
      */
     public Object getSingleResult( )
     {
-        return query.getSingleResult( );
+        return _query.getSingleResult( );
     }
 
     /* (non-Javadoc)
@@ -110,7 +116,7 @@ public class PagedQuery implements Query
      */
     public int executeUpdate( )
     {
-        return query.executeUpdate( );
+        return _query.executeUpdate( );
     }
 
     /* (non-Javadoc)
@@ -118,7 +124,7 @@ public class PagedQuery implements Query
      */
     public Query setMaxResults( int maxResult )
     {
-        return query.setMaxResults( maxResult );
+        return _query.setMaxResults( maxResult );
     }
 
     /* (non-Javadoc)
@@ -126,7 +132,7 @@ public class PagedQuery implements Query
      */
     public int getMaxResults( )
     {
-        return query.getMaxResults( );
+        return _query.getMaxResults( );
     }
 
     /* (non-Javadoc)
@@ -134,7 +140,7 @@ public class PagedQuery implements Query
      */
     public Query setFirstResult( int startPosition )
     {
-        return query.setFirstResult( startPosition );
+        return _query.setFirstResult( startPosition );
     }
 
     /* (non-Javadoc)
@@ -142,7 +148,7 @@ public class PagedQuery implements Query
      */
     public int getFirstResult( )
     {
-        return query.getFirstResult( );
+        return _query.getFirstResult( );
     }
 
     /* (non-Javadoc)
@@ -150,7 +156,7 @@ public class PagedQuery implements Query
      */
     public Query setHint( String hintName, Object value )
     {
-        return query.setHint( hintName, value );
+        return _query.setHint( hintName, value );
     }
 
     /* (non-Javadoc)
@@ -158,7 +164,7 @@ public class PagedQuery implements Query
      */
     public Map<String, Object> getHints( )
     {
-        return query.getHints( );
+        return _query.getHints( );
     }
 
     /* (non-Javadoc)
@@ -166,7 +172,7 @@ public class PagedQuery implements Query
      */
     public <T> Query setParameter( Parameter<T> param, T value )
     {
-        return query.setParameter( param, value );
+        return _query.setParameter( param, value );
     }
 
     /* (non-Javadoc)
@@ -174,7 +180,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( Parameter<Calendar> param, Calendar value, TemporalType temporalType )
     {
-        return query.setParameter( param, value, temporalType );
+        return _query.setParameter( param, value, temporalType );
     }
 
     /* (non-Javadoc)
@@ -182,7 +188,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( Parameter<Date> param, Date value, TemporalType temporalType )
     {
-        return query.setParameter( param, value, temporalType );
+        return _query.setParameter( param, value, temporalType );
     }
 
     /* (non-Javadoc)
@@ -190,7 +196,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( String name, Object value )
     {
-        return query.setParameter( name, value );
+        return _query.setParameter( name, value );
     }
 
     /* (non-Javadoc)
@@ -198,7 +204,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( String name, Calendar value, TemporalType temporalType )
     {
-        return query.setParameter( name, value, temporalType );
+        return _query.setParameter( name, value, temporalType );
     }
 
     /* (non-Javadoc)
@@ -206,7 +212,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( String name, Date value, TemporalType temporalType )
     {
-        return query.setParameter( name, value, temporalType );
+        return _query.setParameter( name, value, temporalType );
     }
 
     /* (non-Javadoc)
@@ -214,7 +220,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( int position, Object value )
     {
-        return query.setParameter( position, value );
+        return _query.setParameter( position, value );
     }
 
     /* (non-Javadoc)
@@ -222,7 +228,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( int position, Calendar value, TemporalType temporalType )
     {
-        return query.setParameter( position, value, temporalType );
+        return _query.setParameter( position, value, temporalType );
     }
 
     /* (non-Javadoc)
@@ -230,7 +236,7 @@ public class PagedQuery implements Query
      */
     public Query setParameter( int position, Date value, TemporalType temporalType )
     {
-        return query.setParameter( position, value, temporalType );
+        return _query.setParameter( position, value, temporalType );
     }
 
     /* (non-Javadoc)
@@ -238,7 +244,7 @@ public class PagedQuery implements Query
      */
     public Set<Parameter<?>> getParameters( )
     {
-        return query.getParameters( );
+        return _query.getParameters( );
     }
 
     /* (non-Javadoc)
@@ -246,7 +252,7 @@ public class PagedQuery implements Query
      */
     public Parameter<?> getParameter( String name )
     {
-        return query.getParameter( name );
+        return _query.getParameter( name );
     }
 
     /* (non-Javadoc)
@@ -254,7 +260,7 @@ public class PagedQuery implements Query
      */
     public <T> Parameter<T> getParameter( String name, Class<T> type )
     {
-        return query.getParameter( name, type );
+        return _query.getParameter( name, type );
     }
 
     /* (non-Javadoc)
@@ -262,7 +268,7 @@ public class PagedQuery implements Query
      */
     public Parameter<?> getParameter( int position )
     {
-        return query.getParameter( position );
+        return _query.getParameter( position );
     }
 
     /* (non-Javadoc)
@@ -270,7 +276,7 @@ public class PagedQuery implements Query
      */
     public <T> Parameter<T> getParameter( int position, Class<T> type )
     {
-        return query.getParameter( position, type );
+        return _query.getParameter( position, type );
     }
 
     /* (non-Javadoc)
@@ -278,7 +284,7 @@ public class PagedQuery implements Query
      */
     public boolean isBound( Parameter<?> param )
     {
-        return query.isBound( param );
+        return _query.isBound( param );
     }
 
     /* (non-Javadoc)
@@ -286,7 +292,7 @@ public class PagedQuery implements Query
      */
     public <T> T getParameterValue( Parameter<T> param )
     {
-        return query.getParameterValue( param );
+        return _query.getParameterValue( param );
     }
 
     /* (non-Javadoc)
@@ -294,7 +300,7 @@ public class PagedQuery implements Query
      */
     public Object getParameterValue( String name )
     {
-        return query.getParameterValue( name );
+        return _query.getParameterValue( name );
     }
 
     /* (non-Javadoc)
@@ -302,7 +308,7 @@ public class PagedQuery implements Query
      */
     public Object getParameterValue( int position )
     {
-        return query.getParameterValue( position );
+        return _query.getParameterValue( position );
     }
 
     /* (non-Javadoc)
@@ -310,7 +316,7 @@ public class PagedQuery implements Query
      */
     public Query setFlushMode( FlushModeType flushMode )
     {
-        return query.setFlushMode( flushMode );
+        return _query.setFlushMode( flushMode );
     }
 
     /* (non-Javadoc)
@@ -318,7 +324,7 @@ public class PagedQuery implements Query
      */
     public FlushModeType getFlushMode( )
     {
-        return query.getFlushMode( );
+        return _query.getFlushMode( );
     }
 
     /* (non-Javadoc)
@@ -326,7 +332,7 @@ public class PagedQuery implements Query
      */
     public Query setLockMode( LockModeType lockMode )
     {
-        return query.setLockMode( lockMode );
+        return _query.setLockMode( lockMode );
     }
 
     /* (non-Javadoc)
@@ -334,7 +340,7 @@ public class PagedQuery implements Query
      */
     public LockModeType getLockMode( )
     {
-        return query.getLockMode( );
+        return _query.getLockMode( );
     }
 
     /* (non-Javadoc)
@@ -342,23 +348,27 @@ public class PagedQuery implements Query
      */
     public <T> T unwrap( Class<T> cls )
     {
-        return query.unwrap( cls );
+        return _query.unwrap( cls );
     }
 
     /**
+     * Gets the query.
+     * 
      * @return the query
      */
     public Query getQuery( )
     {
-        return query;
+        return _query;
     }
 
     /**
+     * Sets the query.
+     * 
      * @param query the query to set
      */
     public void setQuery( Query query )
     {
-        this.query = query;
+        this._query = query;
     }
 
 }

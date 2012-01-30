@@ -51,16 +51,22 @@ import org.apache.commons.lang.StringUtils;
  */
 public class DateFormatValidator implements ConstraintValidator<DateFormat, String>
 {
-    String format;
-    SimpleDateFormat sdf;
+    private String format;
+    private SimpleDateFormat sdf;
 
+    /**
+     * {@inheritDoc}
+     */
     public void initialize( DateFormat constraintAnnotation )
     {
         format = constraintAnnotation.format( );
         sdf = new SimpleDateFormat( format );
-        sdf.setLenient(false);
+        sdf.setLenient( false );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public boolean isValid( String value, ConstraintValidatorContext context )
     {
         boolean valid = true;

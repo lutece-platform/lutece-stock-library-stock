@@ -42,7 +42,11 @@ import java.util.ArrayList;
  */
 public class ResultList<E> extends ArrayList<E>
 {
-    private int totalResult;
+    /**  
+     *
+     */
+    private static final long serialVersionUID = 412957549497129907L;
+    private int _totalResult;
 
     /**
      * Retourne le nombre total de résultats
@@ -50,7 +54,7 @@ public class ResultList<E> extends ArrayList<E>
      */
     public int getTotalResult( )
     {
-        return totalResult;
+        return _totalResult;
     }
 
     /**
@@ -59,6 +63,6 @@ public class ResultList<E> extends ArrayList<E>
      */
     public void setTotalResult( int totalResult )
     {
-        this.totalResult = totalResult;
+        this._totalResult = totalResult;
     }
 }

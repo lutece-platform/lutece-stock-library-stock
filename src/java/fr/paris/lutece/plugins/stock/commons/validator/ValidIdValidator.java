@@ -47,10 +47,26 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class ValidIdValidator implements ConstraintValidator<ValidId, AbstractDTO<?>>
 {
+    /**
+     * {@inheritDoc}
+     */
     public void initialize( ValidId constraintAnnotation )
     {
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
+     * javax.validation.ConstraintValidatorContext)
+     */
+    /**
+     * Valid if id not null and > 0.
+     * 
+     * @param value the value
+     * @param context the context
+     * @return true, if is valid
+     */
     public boolean isValid( AbstractDTO<?> value, ConstraintValidatorContext context )
     {
         boolean valid = true;

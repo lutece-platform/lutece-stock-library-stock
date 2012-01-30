@@ -52,14 +52,14 @@ import org.apache.commons.lang.StringUtils;
  */
 public final class DateUtils
 {
-    private static final SimpleDateFormat SDF_DATE_FR = new SimpleDateFormat( "dd/MM/yyyy", Locale.FRENCH );
-    private static final SimpleDateFormat SDF_HOUR_FR = new SimpleDateFormat( "HH:mm", Locale.FRENCH );
     // index pour les triples champs de recherche par date (entre le -date 0- et le -date 1- ou le -date 2-)
     public static final int DATE_CRITERE_ENTRE_LE = 0;
     public static final int DATE_CRITERE_ET_LE = 1;
     public static final int DATE_CRITERE_OU_LE = 2;
     public static final SimpleDateFormat XML_DATE_FORMAT = new SimpleDateFormat( "yyyy-MM-dd'T'HH:mm:ss'Z'" );
-    private static SimpleDateFormat sdfAnnee;
+    private static final String DATE_FR = "dd/MM/yyyy";
+    private static final String HOUR_FR = "HH:mm";
+    private static SimpleDateFormat _sdfAnnee;
 
     /**
      * Constructeur vide
@@ -83,7 +83,7 @@ public final class DateUtils
             return null;
         }
 
-        DateFormat dateFormat = SDF_DATE_FR;
+        DateFormat dateFormat = new SimpleDateFormat( DATE_FR );
         dateFormat.setLenient( false );
 
         Date date;
@@ -154,7 +154,7 @@ public final class DateUtils
      */
     public static String getDateFr( Date date )
     {
-        return SDF_DATE_FR.format( date );
+        return new SimpleDateFormat( DATE_FR ).format( date );
     }
 
     /**
@@ -164,7 +164,7 @@ public final class DateUtils
      */
     public static String getHourFr( Date date )
     {
-        return SDF_HOUR_FR.format( date );
+        return new SimpleDateFormat( HOUR_FR ).format( date );
     }
 
     /**
@@ -189,15 +189,13 @@ public final class DateUtils
     }
 
     /**
-     * renvoie la date courante
-     * @param strPattern Le format de la date courante
+     * renvoie la date courante.
+     * 
      * @return la date courante
      */
     public static String getCurrentDateString( )
     {
-        SimpleDateFormat dateFormat = SDF_DATE_FR;
-
-        return dateFormat.format( new Timestamp( System.currentTimeMillis( ) ) );
+        return new SimpleDateFormat( DATE_FR ).format( new Timestamp( System.currentTimeMillis( ) ) );
     }
 
     /**
@@ -257,9 +255,10 @@ public final class DateUtils
     }
 
     /**
-     * Vérifie que l'heure est bien au format HH:mm
+     * Vérifie que l'heure est bien au format HH:mm.
+     * 
      * @param sHeure string heure
-     * @return
+     * @return true, if successful
      */
     public static boolean verifierHeure( String sHeure )
     {
@@ -293,11 +292,11 @@ public final class DateUtils
      */
     public static String getAnnee( Date date )
     {
-        if ( sdfAnnee == null )
+        if ( _sdfAnnee == null )
         {
-            sdfAnnee = new SimpleDateFormat( "yyyy" );
+            _sdfAnnee = new SimpleDateFormat( "yyyy" );
         }
-        return sdfAnnee.format( date );
+        return _sdfAnnee.format( date );
     }
 
     /**
@@ -334,10 +333,12 @@ public final class DateUtils
     /**
      * vérifie un trigramme de dates entre le ... et le ... ou le.
      * 
-     * @param dateEffetRecherche
-     * @param obligatoire si obligatoire est à true la méthode vérifiera aussi
+     * @param dateEffetRecherche the date effet recherche
+     * @param obligatoire si obligatoire est à true la méthode vérifiera
+     *            aussi
      *            si au moins une valeur est saisie.
-     * @return true si les dates sont valides (et éventuellement qu'une date est
+     * @return true si les dates sont valides (et éventuellement qu'une date
+     *         est
      *         saisie).
      */
     public static boolean valideDateEntreLeEtLeOuLe( List<String> dateEffetRecherche, boolean obligatoire )
@@ -347,41 +348,41 @@ public final class DateUtils
         if ( dateEffetRecherche != null )
         {
             int size = dateEffetRecherche.size( );
-            boolean date_effet_valide = true;
-            boolean donnees_presentes = false;
+            boolean dateEffetValide = true;
+            boolean donneesPresentes = false;
             if ( size > 0 )
             {
                 String dateTmp = dateEffetRecherche.get( 0 );
                 if ( StringUtils.isNotEmpty( dateTmp ) )
                 {
-                    donnees_presentes = true;
-                    date_effet_valide = DateUtils.validateDate( dateTmp );
+                    donneesPresentes = true;
+                    dateEffetValide = DateUtils.validateDate( dateTmp );
                 }
 
             }
 
-            if ( size > 1 && date_effet_valide )
+            if ( size > 1 && dateEffetValide )
             {
                 String dateTmp = dateEffetRecherche.get( 1 );
                 if ( StringUtils.isNotEmpty( dateTmp ) )
                 {
-                    donnees_presentes = true;
-                    date_effet_valide = DateUtils.validateDate( dateTmp );
+                    donneesPresentes = true;
+                    dateEffetValide = DateUtils.validateDate( dateTmp );
                 }
             }
 
-            if ( size > 2 && date_effet_valide )
+            if ( size > 2 && dateEffetValide )
             {
                 String dateTmp = dateEffetRecherche.get( 2 );
                 if ( StringUtils.isNotEmpty( dateTmp ) )
                 {
-                    donnees_presentes = true;
-                    date_effet_valide = DateUtils.validateDate( dateTmp );
+                    donneesPresentes = true;
+                    dateEffetValide = DateUtils.validateDate( dateTmp );
                 }
 
             }
 
-            ret = date_effet_valide && ( !obligatoire || ( obligatoire && donnees_presentes ) );
+            ret = dateEffetValide && ( !obligatoire || ( obligatoire && donneesPresentes ) );
         }
         else if ( obligatoire )
         {
@@ -402,7 +403,7 @@ public final class DateUtils
             return null;
         }
 
-        DateFormat dateFormat = SDF_HOUR_FR;
+        DateFormat dateFormat = new SimpleDateFormat( HOUR_FR );
         dateFormat.setLenient( false );
 
         Date date;
@@ -427,10 +428,11 @@ public final class DateUtils
     }
 
     /**
-     * Set the given date hour with the given hour
+     * Set the given date hour with the given hour.
+     * 
      * @param date date
      * @param hour hour to set to the date
-     * @return
+     * @return the date
      */
     public static Date mergeDateHour( Date date, Date hour )
     {
@@ -447,9 +449,10 @@ public final class DateUtils
     }
 
     /**
-     * Get a timestamp with hour setted and date 01/01/1970
+     * Get a timestamp with hour setted and date 01/01/1970.
+     * 
      * @param hour hour to set to the date
-     * @return
+     * @return the hour without date
      */
     public static Date getHourWithoutDate( Date hour )
     {

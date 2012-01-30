@@ -43,8 +43,9 @@ import org.dozer.Mapper;
 
 
 /**
- * Classe abstraite des DTO
+ * Classe abstraite des DTO.
  * 
+ * @param <E> the element type
  * @author abataille
  */
 public abstract class AbstractDTO<E>
@@ -52,16 +53,27 @@ public abstract class AbstractDTO<E>
 
     protected Mapper mapper = (Mapper) SpringContextService.getBean( "mapper" );
 
+    /**
+     * Convert a DTO to entity
+     * 
+     * @return the e entity
+     */
     public abstract E convert( );
 
+    /**
+     * Returns id
+     * @return id
+     */
     public abstract Integer getId( );
 
+
     /**
-     * Convert entity list to DTO list
-     * @param listSource
-     * @return
+     * Convert entity list to DTO list.
+     * 
+     * @param listSource the list source
+     * @return the list
      */
-    public List<E> convertList( Collection<? extends AbstractDTO> listSource )
+    public List<E> convertList( Collection<? extends AbstractDTO<E>> listSource )
     {
         List<E> listDest = new ArrayList<E>( listSource.size( ) );
 

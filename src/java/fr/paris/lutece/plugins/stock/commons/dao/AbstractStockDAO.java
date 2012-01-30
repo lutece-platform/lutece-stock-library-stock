@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.stock.commons.dao;
 
+import fr.paris.lutece.plugins.stock.commons.ResultList;
+import fr.paris.lutece.portal.service.jpa.JPALuteceDAO;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -41,20 +44,21 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import fr.paris.lutece.plugins.stock.commons.ResultList;
-import fr.paris.lutece.portal.service.jpa.JPALuteceDAO;
-
 
 /**
- * DOCUMENT ME!
- *
+ * Abstract class for stock DAO.
+ * 
+ * @param <K> the key type
+ * @param <E> the entity type
  * @author abataille
  */
 public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
 {
 
     /**
-     * Generate count query from criteria query and return a paged query
+     * Generate count query from criteria query and return a paged query.
+     * 
+     * @param <T> the generic type of criteria query
      * @param criteriaQuery criteria query
      * @param paginationProperties pagination data
      * @return query paged
@@ -89,8 +93,10 @@ public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
     }
 
     /**
-     * Return all entities paged
+     * Return all entities paged.
+     * 
      * @param paginationProperties properties for pagination
+     * @return the result list
      */
     public ResultList<E> findAll( PaginationProperties paginationProperties )
     {

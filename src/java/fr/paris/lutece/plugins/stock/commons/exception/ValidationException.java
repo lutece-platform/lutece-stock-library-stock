@@ -43,15 +43,27 @@ import javax.validation.ConstraintViolation;
 
 
 /**
- * DOCUMENT ME!
- *
+ * Exception thrown for validation errors
+ * 
  * @author abataille
  */
 public class ValidationException extends FunctionnalException
 {
-    public static String VALIDATION_ERROR = I18nService.getLocalizedString( "validation.erreur", Locale.getDefault( ) );
+    public static final String VALIDATION_ERROR = I18nService.getLocalizedString( "validation.erreur",
+            Locale.getDefault( ) );
+    /**  
+     *
+     */
+    private static final long serialVersionUID = -7981619676742242539L;
+
     private List<ConstraintViolation<?>> constraintViolationList;
 
+    /**
+     * Instantiates a new validation exception.
+     * 
+     * @param bean the bean
+     * @param constraintViolation the constraint violation
+     */
     public ValidationException( Object bean, ConstraintViolation<?> constraintViolation )
     {
         super( bean );
@@ -59,6 +71,11 @@ public class ValidationException extends FunctionnalException
         constraintViolationList.add( constraintViolation );
     }
 
+    /**
+     * Instantiates a new validation exception.
+     * 
+     * @param bean the bean
+     */
     public ValidationException( Object bean )
     {
         super( bean );
@@ -74,6 +91,8 @@ public class ValidationException extends FunctionnalException
     }
 
     /**
+     * Sets the constraint violation list.
+     * 
      * @param constraintViolationList the constraintViolationList to set
      */
     public void setConstraintViolationList( List<ConstraintViolation<?>> constraintViolationList )
@@ -81,20 +100,36 @@ public class ValidationException extends FunctionnalException
         this.constraintViolationList = constraintViolationList;
     }
 
+    /**
+     * Adds the constraint violation.
+     * 
+     * @param constraintViolation the constraint violation
+     */
     public void addConstraintViolation( ConstraintViolation<?> constraintViolation )
     {
         this.constraintViolationList.add( constraintViolation );
     }
 
-    public String getMessage() {
-        StringBuilder sbMessage = new StringBuilder();
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Throwable#getMessage()
+     */
+    /**
+     * {@inheritDoc}
+     */
+    public String getMessage( )
+    {
+        StringBuilder sbMessage = new StringBuilder( );
         sbMessage.append( VALIDATION_ERROR );
-        if(constraintViolationList != null){
+        if ( constraintViolationList != null )
+        {
             for ( ConstraintViolation<?> constraintViolation : constraintViolationList )
             {
                 sbMessage.append( System.getProperty( "line.separator" ) ).append( "Valeur '" )
-                        .append( constraintViolation.getInvalidValue( )
-                        ).append("' incorrecte pour '").append(constraintViolation.getPropertyPath()).append( "' : " ).append(constraintViolation.getMessage());
+                        .append( constraintViolation.getInvalidValue( ) ).append( "' incorrecte pour '" )
+                        .append( constraintViolation.getPropertyPath( ) ).append( "' : " )
+                        .append( constraintViolation.getMessage( ) );
             }
         }
         return sbMessage.toString( );

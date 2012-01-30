@@ -35,9 +35,7 @@ package fr.paris.lutece.plugins.stock.commons.validator;
 
 import fr.paris.lutece.plugins.stock.commons.validator.annotation.AfterCurrentDate;
 import fr.paris.lutece.plugins.stock.utils.DateUtils;
-import fr.paris.lutece.util.date.DateUtil;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.validation.ConstraintValidator;
@@ -53,14 +51,20 @@ import org.apache.commons.lang.StringUtils;
  */
 public class AfterCurrentDateValidator implements ConstraintValidator<AfterCurrentDate, String>
 {
-    SimpleDateFormat sdf;
+    private SimpleDateFormat sdf;
 
+    /**
+     * {@inheritDoc}
+     */
     public void initialize( AfterCurrentDate constraintAnnotation )
     {
         sdf = new SimpleDateFormat( "dd/MM/yyyy" );
-        sdf.setLenient(false);
+        sdf.setLenient( false );
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public boolean isValid( String value, ConstraintValidatorContext context )
     {
         boolean valid = true;

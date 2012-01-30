@@ -51,9 +51,21 @@ import javax.validation.Payload;
 public @interface AfterCurrentDate
 {
 
+    /**
+     * Message.
+     * 
+     */
     String message( ) default "La date est déjà passée";
 
+    /**
+     * Groups.
+     * 
+     */
     Class<?>[] groups( ) default {};
 
+    /**
+     * Payload.
+     * 
+     */
     Class<? extends Payload>[] payload( ) default {};
 }

@@ -43,13 +43,20 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * 
- * Cette classe propose une collection de méthodes utilitaires pour les objets
- * numériques et les numéros séquentiels.
+ * Provides utility methods for numbers
  */
-public class NumberUtils
+public final class NumberUtils
 {
     private static final String PADDING = "0";
 
+    /**
+     * 
+     * Creates a new NumberUtils.java object.
+     */
+    private NumberUtils( )
+    {
+
+    }
     /**
      * Ajouter des 0 à gauche jusqu'à ce que la taille de la chaine soit (au
      * moins) de la taille spécifiée. Si la longueur de la chaine est supérieur
@@ -95,6 +102,12 @@ public class NumberUtils
         return ret;
     }
 
+    /**
+     * Parses the float or return null if exception.
+     * 
+     * @param value the value
+     * @return the float
+     */
     public static Float parseFloatOrNull( String value )
     {
         Float ret;
@@ -109,6 +122,12 @@ public class NumberUtils
         return ret;
     }
 
+    /**
+     * Parses the long or null if exception.
+     * 
+     * @param value the value
+     * @return the long
+     */
     public static Long parseLongOrNull( String value )
     {
         Long ret;
@@ -123,6 +142,13 @@ public class NumberUtils
         return ret;
     }
 
+    /**
+     * Round float.
+     * 
+     * @param a the a
+     * @param n the n
+     * @return the float
+     */
     public static Float round( Float a, int n )
     {
         double p = Math.pow( 10.0, n );

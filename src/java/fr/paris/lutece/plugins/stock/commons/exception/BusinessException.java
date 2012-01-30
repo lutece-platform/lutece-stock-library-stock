@@ -33,13 +33,13 @@
  */
 package fr.paris.lutece.plugins.stock.commons.exception;
 
-import java.util.Locale;
-
 import fr.paris.lutece.portal.service.i18n.I18nService;
+
+import java.util.Locale;
 
 
 /**
- * Exception métier
+ * Business exception
  * 
  */
 public class BusinessException extends FunctionnalException
@@ -49,7 +49,9 @@ public class BusinessException extends FunctionnalException
     private String[] _arguments;
 
     /**
-     * Constructeur de l'exception
+     * Constructeur de l'exception.
+     * 
+     * @param bean the bean
      * @param code Le code de l'exception
      */
     public BusinessException( Object bean, String code )
@@ -59,7 +61,9 @@ public class BusinessException extends FunctionnalException
     }
 
     /**
-     * Constructeur de l'exception
+     * Constructeur de l'exception.
+     * 
+     * @param bean the bean
      * @param code Le code de l'exception
      * @param arguments Les arguments de l'exception
      */
@@ -108,7 +112,6 @@ public class BusinessException extends FunctionnalException
 
     /**
      * Constructeur de message d'erreur à partir d'une {@link BusinessException}
-     * @param e L'exception contenant le message d'erreur
      * @return Le tableau de {@link String} contenant les clés i18n des messages
      *         d'erreurs
      */

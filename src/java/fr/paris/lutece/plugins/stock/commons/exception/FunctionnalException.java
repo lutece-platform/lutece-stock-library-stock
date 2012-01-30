@@ -34,18 +34,28 @@
 package fr.paris.lutece.plugins.stock.commons.exception;
 
 /**
- * DOCUMENT ME!
- *
+ * Exception for functionnal errors
+ * 
  * @author abataille
  */
 public class FunctionnalException extends RuntimeException
 {
 
-    private Object bean;
+    /**  
+     *
+     */
+    private static final long serialVersionUID = -8223810162269764874L;
+    /** The bean. */
+    private Object _bean;
 
+    /**
+     * Instantiates a new functionnal exception.
+     * 
+     * @param bean the bean
+     */
     public FunctionnalException( Object bean )
     {
-        this.bean = bean;
+        this._bean = bean;
     }
 
     /**
@@ -53,7 +63,7 @@ public class FunctionnalException extends RuntimeException
      */
     public Object getBean( )
     {
-        return bean;
+        return _bean;
     }
 
     /**
@@ -61,7 +71,7 @@ public class FunctionnalException extends RuntimeException
      */
     public void setBean( Object bean )
     {
-        this.bean = bean;
+        this._bean = bean;
     }
 
 }

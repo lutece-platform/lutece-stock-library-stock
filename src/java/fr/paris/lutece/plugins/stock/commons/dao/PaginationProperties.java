@@ -1,19 +1,24 @@
 package fr.paris.lutece.plugins.stock.commons.dao;
 
 
+/**
+ * The Interface PaginationProperties.
+ */
 public interface PaginationProperties
 {
 
     /**
-     * Returns index of the first result requested
+     * Returns index of the first result requested.
+     * 
      * @return index of the first result requested
      */
-    public abstract int getFirstResult( );
+    int getFirstResult( );
 
     /**
-     * Returns number of results per page requested
+     * Returns number of results per page requested.
+     * 
      * @return number of results per page requested
      */
-    public abstract int getPageSize( );
+    int getPageSize( );
 
 }

@@ -48,16 +48,26 @@ import org.imgscalr.Scalr;
  * 
  * @author abataille
  */
-public class ImageUtils
+public final class ImageUtils
 {
     private static final Logger LOGGER = Logger.getLogger( ImageUtils.class );
 
     /**
+     * 
+     * Creates a new ImageUtils.java object.
+     */
+    private ImageUtils( )
+    {
+
+    }
+    /**
      * Create a thumbnail and write it into a new file prefixed by tb_
      * (images/lutece.jpg => images/lutece_tb.jpg)
+     * 
      * @param fImage source image file
      * @param width max width of the thumbnail
-     * @throws IOException
+     * @param height the height
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static void createThumbnail( File fImage, int width, int height ) throws IOException
     {

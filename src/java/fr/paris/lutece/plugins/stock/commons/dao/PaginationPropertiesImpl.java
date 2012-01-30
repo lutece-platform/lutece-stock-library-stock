@@ -43,9 +43,9 @@ package fr.paris.lutece.plugins.stock.commons.dao;
  */
 public class PaginationPropertiesImpl implements PaginationProperties
 {
-    private int firstResult;
+    private int _firstResult;
 
-    private int pageSize;
+    private int _pageSize;
 
     /**
      * Creates a new PaginationPropertiesImpl.java object.
@@ -57,27 +57,34 @@ public class PaginationPropertiesImpl implements PaginationProperties
 
     /**
      * Creates a new PaginationPropertiesImpl.java object.
-     * @param firstResult
-     * @param pageSize
+     * 
+     * @param firstResult the first result
+     * @param pageSize the page size
      */
     public PaginationPropertiesImpl( int firstResult, int pageSize )
     {
         super( );
-        this.firstResult = firstResult;
-        this.pageSize = pageSize;
+        this._firstResult = firstResult;
+        this._pageSize = pageSize;
     }
 
     /* (non-Javadoc)
      * @see fr.paris.lutece.plugins.stock.commons.dao.PaginationProperties#getFirstResult()
      */
+    /**
+     * {@inheritDoc}
+     */
     public int getFirstResult( )
     {
-        return this.firstResult;
+        return this._firstResult;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public int getPageSize( )
     {
-        return this.pageSize;
+        return this._pageSize;
     }
 
 }

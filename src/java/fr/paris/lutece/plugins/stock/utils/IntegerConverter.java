@@ -46,6 +46,15 @@ import org.apache.commons.lang.StringUtils;
 public class IntegerConverter implements Converter
 {
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.apache.commons.beanutils.Converter#convert(java.lang.Class,
+     * java.lang.Object)
+     */
+    /**
+     * {@inheritDoc}
+     */
     public Object convert( Class type, Object value ) throws ConversionException
     {
         if ( value != null )

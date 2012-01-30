@@ -6,12 +6,15 @@ package fr.paris.lutece.plugins.stock.utils;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
+
+import org.apache.log4j.Logger;
 
 
 /**
@@ -23,6 +26,7 @@ import java.util.Calendar;
  */
 public class MultiPartFormOutputStream
 {
+    private static final Logger LOGGER = Logger.getLogger( MultiPartFormOutputStream.class );
     /**
      * The line end characters.
      */
@@ -36,12 +40,12 @@ public class MultiPartFormOutputStream
     /**
      * The output stream to write to.
      */
-    private DataOutputStream out = null;
+    private DataOutputStream _out;
 
     /**
      * The multipart boundary string.
      */
-    private String boundary = null;
+    private String _boundary;
 
     /**
      * Creates a new <code>MultiPartFormOutputStream</code> object using
@@ -67,8 +71,8 @@ public class MultiPartFormOutputStream
         {
             throw new IllegalArgumentException( "Boundary stream is required." );
         }
-        this.out = new DataOutputStream( os );
-        this.boundary = boundary;
+        this._out = new DataOutputStream( os );
+        this._boundary = boundary;
     }
 
     /**
@@ -180,17 +184,17 @@ public class MultiPartFormOutputStream
          * <value>\r\n
          */
         // write boundary
-        out.writeBytes( PREFIX );
-        out.writeBytes( boundary );
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( PREFIX );
+        _out.writeBytes( _boundary );
+        _out.writeBytes( NEWLINE );
         // write content header
-        out.writeBytes( "Content-Disposition: form-data; name=\"" + name + "\"" );
-        out.writeBytes( NEWLINE );
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( "Content-Disposition: form-data; name=\"" + name + "\"" );
+        _out.writeBytes( NEWLINE );
+        _out.writeBytes( NEWLINE );
         // write content
-        out.writeBytes( value );
-        out.writeBytes( NEWLINE );
-        out.flush( );
+        _out.writeBytes( value );
+        _out.writeBytes( NEWLINE );
+        _out.flush( );
     }
 
     /**
@@ -243,7 +247,7 @@ public class MultiPartFormOutputStream
         }
 
         Calendar cal = Calendar.getInstance( );
-        String UUID = String.valueOf( cal.get( Calendar.YEAR ) ) + String.valueOf( cal.get( Calendar.MONTH ) )
+        String uUID = String.valueOf( cal.get( Calendar.YEAR ) ) + String.valueOf( cal.get( Calendar.MONTH ) )
                 + String.valueOf( cal.get( Calendar.DAY_OF_MONTH ) ) + String.valueOf( cal.get( Calendar.HOUR_OF_DAY ) )
                 + String.valueOf( cal.get( Calendar.MINUTE ) ) + String.valueOf( cal.get( Calendar.SECOND ) );
 
@@ -256,25 +260,25 @@ public class MultiPartFormOutputStream
          * <file-data>\r\n
          */
         // write boundary
-        out.writeBytes( PREFIX );
-        out.writeBytes( boundary );
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( PREFIX );
+        _out.writeBytes( _boundary );
+        _out.writeBytes( NEWLINE );
         // write content header
-        out.writeBytes( "Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + UUID + "_" + fileName
+        _out.writeBytes( "Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + uUID + "_" + fileName
                 + "\"" );
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( NEWLINE );
         if ( mimeType != null )
         {
-            out.writeBytes( "Content-Type: " + mimeType );
-            out.writeBytes( NEWLINE );
+            _out.writeBytes( "Content-Type: " + mimeType );
+            _out.writeBytes( NEWLINE );
         }
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( NEWLINE );
         // write content
         byte[] data = new byte[1024];
         int r = 0;
         while ( ( r = is.read( data, 0, data.length ) ) != -1 )
         {
-            out.write( data, 0, r );
+            _out.write( data, 0, r );
         }
         // close input stream, but ignore any possible exception for it
         try
@@ -283,9 +287,10 @@ public class MultiPartFormOutputStream
         }
         catch ( Exception e )
         {
+            LOGGER.warn( e.getMessage( ), e );
         }
-        out.writeBytes( NEWLINE );
-        out.flush( );
+        _out.writeBytes( NEWLINE );
+        _out.flush( );
     }
 
     /**
@@ -312,7 +317,7 @@ public class MultiPartFormOutputStream
         }
 
         Calendar cal = Calendar.getInstance( );
-        String UUID = String.valueOf( cal.get( Calendar.YEAR ) ) + String.valueOf( cal.get( Calendar.MONTH ) )
+        String uUID = String.valueOf( cal.get( Calendar.YEAR ) ) + String.valueOf( cal.get( Calendar.MONTH ) )
                 + String.valueOf( cal.get( Calendar.DAY_OF_MONTH ) ) + String.valueOf( cal.get( Calendar.HOUR_OF_DAY ) )
                 + String.valueOf( cal.get( Calendar.MINUTE ) ) + String.valueOf( cal.get( Calendar.SECOND ) );
 
@@ -325,23 +330,23 @@ public class MultiPartFormOutputStream
          * <file-data>\r\n
          */
         // write boundary
-        out.writeBytes( PREFIX );
-        out.writeBytes( boundary );
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( PREFIX );
+        _out.writeBytes( _boundary );
+        _out.writeBytes( NEWLINE );
         // write content header
-        out.writeBytes( "Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + UUID + "_" + fileName
+        _out.writeBytes( "Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + uUID + "_" + fileName
                 + "\"" );
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( NEWLINE );
         if ( mimeType != null )
         {
-            out.writeBytes( "Content-Type: " + mimeType );
-            out.writeBytes( NEWLINE );
+            _out.writeBytes( "Content-Type: " + mimeType );
+            _out.writeBytes( NEWLINE );
         }
-        out.writeBytes( NEWLINE );
+        _out.writeBytes( NEWLINE );
         // write content
-        out.write( data, 0, data.length );
-        out.writeBytes( NEWLINE );
-        out.flush( );
+        _out.write( data, 0, data.length );
+        _out.writeBytes( NEWLINE );
+        _out.flush( );
     }
 
     /**
@@ -366,12 +371,12 @@ public class MultiPartFormOutputStream
     public void close( ) throws java.io.IOException
     {
         // write final boundary
-        out.writeBytes( PREFIX );
-        out.writeBytes( boundary );
-        out.writeBytes( PREFIX );
-        out.writeBytes( NEWLINE );
-        out.flush( );
-        out.close( );
+        _out.writeBytes( PREFIX );
+        _out.writeBytes( _boundary );
+        _out.writeBytes( PREFIX );
+        _out.writeBytes( NEWLINE );
+        _out.flush( );
+        _out.close( );
     }
 
     /**
@@ -381,7 +386,7 @@ public class MultiPartFormOutputStream
      */
     public String getBoundary( )
     {
-        return this.boundary;
+        return this._boundary;
     }
 
     /**
@@ -391,8 +396,9 @@ public class MultiPartFormOutputStream
      * <code>useCaches</code> and <code>defaultUseCaches</code> fields to
      * the appropriate settings in the correct order.
      * 
+     * @param url the url
      * @return a <code>java.net.URLConnection</code> object for the URL
-     * @throws java.io.IOException on input/output errors
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static URLConnection createConnection( final URL url ) throws java.io.IOException
     {

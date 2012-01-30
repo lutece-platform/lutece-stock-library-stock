@@ -36,9 +36,12 @@ package fr.paris.lutece.plugins.stock.commons.dao;
 import fr.paris.lutece.plugins.stock.commons.ResultList;
 import fr.paris.lutece.util.jpa.IGenericDAO;
 
+
 /**
- * DOCUMENT ME!
- *
+ * Interface for DAO.
+ * 
+ * @param <K> the key type
+ * @param <E> the element type
  * @author abataille
  */
 public interface IStockDAO<K, E> extends IGenericDAO<K, E>

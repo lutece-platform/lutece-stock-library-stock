@@ -33,6 +33,8 @@
  */
 package fr.paris.lutece.plugins.stock.utils;
 
+import fr.paris.lutece.plugins.stock.commons.exception.TechnicalException;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,12 +43,21 @@ import java.io.OutputStream;
 
 import org.apache.commons.io.FilenameUtils;
 
-import fr.paris.lutece.plugins.stock.commons.exception.TechnicalException;
 
-
+/**
+ * The Class FileUtils.
+ */
 public class FileUtils
 {
 
+    /**
+     * 
+     * Creates a new FileUtils.java object.
+     */
+    private FileUtils( )
+    {
+
+    }
     /**
      * Write content from input stream to the disk.
      * @param is input stream
@@ -57,7 +68,7 @@ public class FileUtils
         try
         {
             OutputStream out = new FileOutputStream( file );
-            byte buf[] = new byte[1024];
+            byte[] buf = new byte[1024];
             int len;
             while ( ( len = is.read( buf ) ) > 0 )
             {
@@ -75,7 +86,9 @@ public class FileUtils
     /**
      * If file exists, generate a file with non existing file name (for example
      * fileexist-1.jpg)
+     * 
      * @param file file to rename
+     * @return the unique file
      */
     public static File getUniqueFile( File file )
     {

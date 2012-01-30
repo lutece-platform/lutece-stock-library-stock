@@ -42,8 +42,8 @@ import java.sql.Timestamp;
  */
 public class TimestampValidation extends Timestamp
 {
-    private static final long serialVersionUID = 1L;
     public static final int ERROR_DATE_FORMAT = 1;
+    private static final long serialVersionUID = 1L;
     private String _strErrorValue;
     private int _nIdTypeError;
 
@@ -66,12 +66,11 @@ public class TimestampValidation extends Timestamp
      * @param arg4 Argument 5
      * @param arg5 Argument 6
      * @param arg6 Argument 7
+     * @deprecated
      */
     public TimestampValidation( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6 )
     {
         super( arg0, arg1, arg2, arg3, arg4, arg5, arg6 );
-
-        // TODO Auto-generated constructor stub
     }
 
     /**

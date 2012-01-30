@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.stock.utils.dozer;
 
+import fr.paris.lutece.plugins.stock.commons.exception.TechnicalException;
+import fr.paris.lutece.plugins.stock.utils.EntityBean;
+
 import java.lang.reflect.InvocationTargetException;
 
 import javax.inject.Inject;
@@ -40,9 +43,6 @@ import javax.inject.Inject;
 import org.apache.commons.beanutils.BeanUtils;
 import org.dozer.CustomConverter;
 import org.dozer.DozerBeanMapper;
-
-import fr.paris.lutece.plugins.stock.commons.exception.TechnicalException;
-import fr.paris.lutece.plugins.stock.utils.EntityBean;
 
 
 /**
@@ -56,7 +56,7 @@ import fr.paris.lutece.plugins.stock.utils.EntityBean;
 public class CustomDTODozerConverter implements CustomConverter
 {
 	@Inject
-    DozerBeanMapper dozerMapper;
+    private DozerBeanMapper _dozerMapper;
 
     /**
      * Convertit un id en entité initialisée avec l'id et inversement.
@@ -103,7 +103,7 @@ public class CustomDTODozerConverter implements CustomConverter
                             "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
                 }
             }
-            return dozerMapper.map( sourceFieldValue, destinationClass );
+            return _dozerMapper.map( sourceFieldValue, destinationClass );
         }
     }
 

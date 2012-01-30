@@ -51,10 +51,10 @@ import org.apache.commons.lang.StringUtils;
  */
 public class ListEmailValidator implements ConstraintValidator<ListEmail, String>
 {
-	private static String ATOM = "[a-z0-9!#$%&'*+/=?^_`{|}~-]";
-	private static String DOMAIN = "(" + ATOM + "+(\\." + ATOM + "+)*";
-	private static String IP_DOMAIN = "\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
-	private static String PROPERTY_MAIL_SEPARATOR = "mail.list.separator";
+    private static final String ATOM = "[a-z0-9!#$%&'*+/=?^_`{|}~-]";
+    private static final String DOMAIN = "(" + ATOM + "+(\\." + ATOM + "+)*";
+    private static final String IP_DOMAIN = "\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
+    private static final String PROPERTY_MAIL_SEPARATOR = "mail.list.separator";
 
 	private java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(
 			"^" + ATOM + "+(\\." + ATOM + "+)*@"
@@ -64,20 +64,26 @@ public class ListEmailValidator implements ConstraintValidator<ListEmail, String
 					+ ")$",
 			java.util.regex.Pattern.CASE_INSENSITIVE
 	);
-	
+
+    /**
+     * {@inheritDoc}
+     */
     public void initialize( ListEmail constraintAnnotation )
     {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public boolean isValid( String value, ConstraintValidatorContext context )
     {
         boolean valid = true;
         if ( StringUtils.isNotEmpty( value ) )
         {
         	String[] listEmail = value.split( AppPropertiesService.getProperty( PROPERTY_MAIL_SEPARATOR ) );
-    		
-        	for (String email : listEmail )
-        	{
+
+            for ( String email : listEmail )
+            {
         		Matcher m = pattern.matcher( email.trim( ) );
         		if ( !m.matches( ) )
         		{

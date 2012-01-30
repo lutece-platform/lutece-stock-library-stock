@@ -33,12 +33,12 @@
  */
 package fr.paris.lutece.plugins.stock.utils.dozer;
 
+import fr.paris.lutece.plugins.stock.utils.EntityBean;
+
 import javax.inject.Inject;
 
 import org.dozer.CustomConverter;
 import org.dozer.DozerBeanMapper;
-
-import fr.paris.lutece.plugins.stock.utils.EntityBean;
 
 
 /**
@@ -52,7 +52,7 @@ import fr.paris.lutece.plugins.stock.utils.EntityBean;
 public class CustomIdDozerConverter implements CustomConverter
 {
 	@Inject
-    DozerBeanMapper dozerMapper;
+    private DozerBeanMapper _dozerMapper;
 
     /**
      * Convertit un id en entité initialisée avec l'id et inversement.
@@ -78,7 +78,7 @@ public class CustomIdDozerConverter implements CustomConverter
                     EntityBean entiteDest;
                     if ( existingDestinationFieldValue == null )
                     {
-                        entiteDest = (EntityBean) dozerMapper.map( sourceFieldValue, destinationClass );
+                        entiteDest = (EntityBean) _dozerMapper.map( sourceFieldValue, destinationClass );
                     }
                     else
                     {

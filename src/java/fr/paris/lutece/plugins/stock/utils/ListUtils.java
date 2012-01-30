@@ -33,6 +33,9 @@
  */
 package fr.paris.lutece.plugins.stock.utils;
 
+import fr.paris.lutece.portal.service.util.AppPropertiesService;
+import fr.paris.lutece.util.ReferenceList;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
@@ -40,19 +43,23 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
-import fr.paris.lutece.portal.service.util.AppPropertiesService;
-import fr.paris.lutece.util.ReferenceList;
-
 
 /**
- * Utilitaire servant Ã  la manipulation des listes
- * 
+ * Utilitaire servant a  la manipulation des listes.
  */
-public class ListUtils
+public final class ListUtils
 {
 
     private static final String PROPERTY_LIST_SEPARATOR = ";";
     private static final Logger LOGGER = Logger.getLogger( ListUtils.class );
+
+    /**
+     * Instantiates a new list utils.
+     */
+    private ListUtils( )
+    {
+
+    }
 
     /**
      * Conversion d'une liste de type {@link List} vers une
@@ -109,9 +116,10 @@ public class ListUtils
     }
 
     /**
-     * Return
-     * @param propertyKey
-     * @return
+     * Return.
+     * 
+     * @param propertyKey the property key
+     * @return the property list
      */
     public static List<String> getPropertyList( String propertyKey )
     {

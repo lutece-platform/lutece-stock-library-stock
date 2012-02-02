@@ -290,7 +290,7 @@ public final class DateUtils
      * @param date date
      * @return année
      */
-    public static String getAnnee( Date date )
+    public static synchronized String getAnnee( Date date )
     {
         if ( _sdfAnnee == null )
         {

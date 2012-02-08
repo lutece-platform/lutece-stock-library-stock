@@ -45,7 +45,7 @@ import org.apache.log4j.Logger;
 
 
 /**
- * Utilitaire servant a  la manipulation des listes.
+ * Utilitaire servant Ã  la manipulation des listes.
  */
 public final class ListUtils
 {

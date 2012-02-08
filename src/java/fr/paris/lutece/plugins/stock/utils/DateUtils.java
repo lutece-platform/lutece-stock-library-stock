@@ -468,4 +468,55 @@ public final class DateUtils
         return calDate.getTime( );
     }
 
+    /**
+     * return a timestamp Object which correspond with the string specified in
+     * parameter.
+     * @param date the date who must convert
+     * @return a timestamp Object which correspond with the string specified in
+     *         parameter.
+     */
+    public static Timestamp getDateLastMinute( Date date )
+    {
+        if ( date == null )
+        {
+            return null;
+        }
+
+        Calendar caldate = new GregorianCalendar( );
+        caldate.setTime( date );
+        caldate.set( Calendar.MILLISECOND, 0 );
+        caldate.set( Calendar.SECOND, 0 );
+        caldate.set( Calendar.HOUR_OF_DAY, caldate.getActualMaximum( Calendar.HOUR_OF_DAY ) );
+        caldate.set( Calendar.MINUTE, caldate.getActualMaximum( Calendar.MINUTE ) );
+
+        Timestamp timeStamp = new Timestamp( caldate.getTimeInMillis( ) );
+
+        return timeStamp;
+    }
+
+    /**
+     * return a timestamp Object which correspond with the string specified in
+     * parameter.
+     * @param date the date who must convert
+     * @return a timestamp Object which correspond with the string specified in
+     *         parameter.
+     */
+    public static Timestamp getDateFirstMinute( Date date )
+    {
+        if ( date == null )
+        {
+            return null;
+        }
+
+        Calendar caldate = new GregorianCalendar( );
+        caldate.setTime( date );
+        caldate.set( Calendar.MILLISECOND, 0 );
+        caldate.set( Calendar.SECOND, 0 );
+        caldate.set( Calendar.HOUR_OF_DAY, caldate.getActualMinimum( Calendar.HOUR_OF_DAY ) );
+        caldate.set( Calendar.MINUTE, caldate.getActualMinimum( Calendar.MINUTE ) );
+
+        Timestamp timeStamp = new Timestamp( caldate.getTimeInMillis( ) );
+
+        return timeStamp;
+    }
 }

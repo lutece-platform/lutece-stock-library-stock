@@ -69,7 +69,7 @@ public final class ImageUtils
      * @param height the height
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    public static void createThumbnail( File fImage, int width, int height ) throws IOException
+    public static File createThumbnail( File fImage, int width, int height ) throws IOException
     {
         BufferedImage image = ImageIO.read( fImage );
         BufferedImage resizedImage;
@@ -89,5 +89,6 @@ public final class ImageUtils
         ImageIO.write( resizedImage, "jpg", fThumb );
 
         LOGGER.debug( "Thumbnail créé " + fThumb.getAbsolutePath( ) );
+        return fThumb;
     }
 }

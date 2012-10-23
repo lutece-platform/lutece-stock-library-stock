@@ -80,9 +80,7 @@ public class PagedQuery implements Query
         
         if ( this._paginationProperties != null )
         {
-	        //Calculate pagination properties for query
-	        int maxResult = this._paginationProperties.getFirstResult( ) + this._paginationProperties.getPageSize( );
-	        this._query.setMaxResults( maxResult );
+            this._query.setMaxResults( this._paginationProperties.getPageSize( ) );
 	        this._query.setFirstResult( this._paginationProperties.getFirstResult( ) );
         }
     }

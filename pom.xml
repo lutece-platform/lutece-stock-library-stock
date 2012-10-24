@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.paris.lutece.plugins</groupId>
 	<artifactId>library-stock</artifactId>
-	<version>1.0.3-RC1</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>Lutece Stock library</name>
 
 	
@@ -73,9 +73,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/tags/library-stock-1.0.3</connection>
-		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/library-stock-1.0.3</developerConnection>
-		<url>http://dev.lutece.paris.fr/svn/lutece/portal/tags/library-stock-1.0.3</url>
+		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</connection>
+		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</developerConnection>
+		<url>http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</url>
 	</scm> 
 	
 	

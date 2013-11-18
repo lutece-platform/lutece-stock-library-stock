@@ -57,8 +57,8 @@ public final class DateUtils
     public static final int DATE_CRITERE_ET_LE = 1;
     public static final int DATE_CRITERE_OU_LE = 2;
     public static final String XML_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-    private static final String DATE_FR = "dd/MM/yyyy";
-    private static final String HOUR_FR = "HH:mm";
+    public static final String DATE_FR = "dd/MM/yyyy";
+    public static final String HOUR_FR = "HH:mm";
     private static SimpleDateFormat _sdfAnnee;
 
     /**

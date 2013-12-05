@@ -50,6 +50,7 @@ import org.imgscalr.Scalr;
  */
 public final class ImageUtils
 {
+    private static final String PARAMETER_JPG = "jpg";
     private static final Logger LOGGER = Logger.getLogger( ImageUtils.class );
 
     /**
@@ -60,6 +61,7 @@ public final class ImageUtils
     {
 
     }
+
     /**
      * Create a thumbnail and write it into a new file prefixed by tb_
      * (images/lutece.jpg => images/lutece_tb.jpg)
@@ -71,24 +73,40 @@ public final class ImageUtils
      */
     public static File createThumbnail( File fImage, int width, int height ) throws IOException
     {
-        BufferedImage image = ImageIO.read( fImage );
-        BufferedImage resizedImage;
-        // Resize image if width is superior to target thumb width
-        if ( image.getWidth( ) > width || image.getHeight( ) > height )
-        {
-            resizedImage = Scalr.resize( image, Scalr.Mode.AUTOMATIC, width, height );
-        }
-        else
-        {
-            LOGGER.debug( "Image " + fImage.getName( ) + " non redimensionnée car déjà plus petite que " + width + "x"
-                    + height );
-            resizedImage = image;
-        }
-        // Create a new file
-        File fThumb = new File( fImage.getParent( ), "tb_" + fImage.getName( ) );
-        ImageIO.write( resizedImage, "jpg", fThumb );
+        File fThumb = resizeImage( fImage, width, height, "tb_" + fImage.getName( ) );
 
         LOGGER.debug( "Thumbnail créé " + fThumb.getAbsolutePath( ) );
         return fThumb;
+    }
+
+    /**
+     * 
+     * @param fImage source image file
+     * @param width the max width for the image
+     * @param height the max height for the image
+     * @param newName the new name for the image, can be null to keep old name
+     * @return the image with limit dimensions
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    public static File resizeImage( File fImage, int maxWidth, int maxHeight, String newName ) throws IOException
+    {
+        BufferedImage image = ImageIO.read( fImage );
+        BufferedImage resizedImage;
+
+        if ( image.getWidth( ) > maxWidth || image.getHeight( ) > maxHeight )
+        {
+            resizedImage = Scalr.resize( image, Scalr.Mode.AUTOMATIC, maxWidth, maxHeight );
+        }
+        else
+        {
+            LOGGER.debug( "Image " + fImage.getName( ) + " non redimensionnée car déjà plus petite que " + maxWidth
+                    + "x" + maxHeight );
+            resizedImage = image;
+        }
+
+        File fResized = new File( fImage.getParent( ), newName != null ? newName : fImage.getName( ) );
+        ImageIO.write( resizedImage, PARAMETER_JPG, fResized );
+
+        return fResized;
     }
 }

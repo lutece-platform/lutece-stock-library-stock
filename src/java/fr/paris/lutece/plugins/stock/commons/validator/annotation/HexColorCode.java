@@ -51,7 +51,7 @@ import javax.validation.Payload;
 public @interface HexColorCode
 {
     /** message */
-    String message( ) default "Le code coleur n'est pas au format hexadécimal (ex : #C6C6C6)";
+    String message( ) default "Le code couleur n'est pas au format hexadécimal (ex : #C6C6C6)";
 
     /** group */
     Class<?>[] groups( ) default {};

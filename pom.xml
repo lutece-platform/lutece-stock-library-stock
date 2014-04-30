@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.paris.lutece.plugins</groupId>
 	<artifactId>library-stock</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.1.1</version>
 	<name>Lutece Stock library</name>
 
 	
@@ -68,9 +68,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</connection>
-		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</developerConnection>
-		<url>http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/applications/library-stock</url>
+		<connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/tags/library-stock-1.1.1</connection>
+		<developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/tags/library-stock-1.1.1</developerConnection>
+		<url>http://dev.lutece.paris.fr/svn/lutece/portal/tags/library-stock-1.1.1</url>
 	</scm>
 	<properties>
 		<jiraProjectName>LIBSTOCK</jiraProjectName>

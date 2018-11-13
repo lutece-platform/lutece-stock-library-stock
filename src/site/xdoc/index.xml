@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Plugin</title>
+    </properties>
+    <body>
+        <section name="Library Stock">
+            <subsection name="Introduction">
+                The purpose of this library is to provide a number of tools for the stock plugin.
+            </subsection>
+        </section>
+    </body>
+</document>

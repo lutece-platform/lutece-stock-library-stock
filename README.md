@@ -1,7 +1,7 @@
 
-#Library Stock
+# Library Stock
 
-##Introduction
+## Introduction
 The purpose of this library is to provide a number of tools for the stock plugin.
 
 [Maven documentation and reports](http://dev.lutece.paris.fr/plugins/library-stock/)

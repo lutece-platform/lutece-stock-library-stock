@@ -4,7 +4,7 @@
         <title>Plugin</title>
     </properties>
     <body>
-        <section name="Plugin Stock">
+        <section name="Library Stock">
             <subsection name="Introduction">
                 Le but de cette librairie est de fournir des utilitaires pour le plugin stock.
             </subsection>

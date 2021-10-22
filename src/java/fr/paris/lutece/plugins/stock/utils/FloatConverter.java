@@ -35,7 +35,7 @@ package fr.paris.lutece.plugins.stock.utils;
 
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.Converter;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Converter of {@link Integer}. Set null if empty string is provided.

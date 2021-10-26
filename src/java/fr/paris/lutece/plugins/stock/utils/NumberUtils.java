@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * 
  * Provides utility methods for numbers
@@ -57,14 +56,16 @@ public final class NumberUtils
     {
 
     }
+
     /**
-     * Ajouter des 0 à gauche jusqu'à ce que la taille de la chaine soit (au
-     * moins) de la taille spécifiée. Si la longueur de la chaine est supérieur
-     * à la taille finale demandée elle n'est pas modifiée.
-     * @param str Chaine à modifier
-     * @param tailleFinale Longueure de la chaine une fois modifiée
-     * @return La chaine à modifier plus une série de '0' à gauche pour
-     *         atteindre la longueure demandée.
+     * Ajouter des 0 à gauche jusqu'à ce que la taille de la chaine soit (au moins) de la taille spécifiée. Si la longueur de la chaine est supérieur à la
+     * taille finale demandée elle n'est pas modifiée.
+     * 
+     * @param str
+     *            Chaine à modifier
+     * @param tailleFinale
+     *            Longueure de la chaine une fois modifiée
+     * @return La chaine à modifier plus une série de '0' à gauche pour atteindre la longueure demandée.
      */
     public static String fillWithZeros( String str, int tailleFinale )
     {
@@ -82,15 +83,14 @@ public final class NumberUtils
     }
 
     /**
-     * Applique le même comportement que fillWithZeros mais vérifie avant
-     * qu'aucun caractère
-     * '%' n'est présent dans la chaine et si la chaine n'est pas vide.. Si ce
-     * caractère est trouvé la chaine
-     * est retournée tel quel sans modifications.
-     * @param str Chaine à modifier
-     * @param tailleFinale Longueure de la chaine une fois modifiée
-     * @return La chaine à modifier plus une série de '0' à gauche pour
-     *         atteindre la longueure demandée.
+     * Applique le même comportement que fillWithZeros mais vérifie avant qu'aucun caractère '%' n'est présent dans la chaine et si la chaine n'est pas vide..
+     * Si ce caractère est trouvé la chaine est retournée tel quel sans modifications.
+     * 
+     * @param str
+     *            Chaine à modifier
+     * @param tailleFinale
+     *            Longueure de la chaine une fois modifiée
+     * @return La chaine à modifier plus une série de '0' à gauche pour atteindre la longueure demandée.
      */
     public static String fillWithZerosIfNoPercentCharFoundAndNotEmpty( String str, int tailleFinale )
     {
@@ -105,7 +105,8 @@ public final class NumberUtils
     /**
      * Parses the float or return null if exception.
      * 
-     * @param value the value
+     * @param value
+     *            the value
      * @return the float
      */
     public static Float parseFloatOrNull( String value )
@@ -115,7 +116,7 @@ public final class NumberUtils
         {
             ret = Float.parseFloat( value );
         }
-        catch ( NumberFormatException e )
+        catch( NumberFormatException e )
         {
             ret = null;
         }
@@ -125,7 +126,8 @@ public final class NumberUtils
     /**
      * Parses the long or null if exception.
      * 
-     * @param value the value
+     * @param value
+     *            the value
      * @return the long
      */
     public static Long parseLongOrNull( String value )
@@ -135,7 +137,7 @@ public final class NumberUtils
         {
             ret = Long.parseLong( value );
         }
-        catch ( NumberFormatException e )
+        catch( NumberFormatException e )
         {
             ret = null;
         }
@@ -145,8 +147,10 @@ public final class NumberUtils
     /**
      * Round float.
      * 
-     * @param a the a
-     * @param n the n
+     * @param a
+     *            the a
+     * @param n
+     *            the n
      * @return the float
      */
     public static Float round( Float a, int n )
@@ -158,7 +162,8 @@ public final class NumberUtils
 
     /**
      * 
-     * @param a Un nombre.
+     * @param a
+     *            Un nombre.
      * @return Le nombre tronqué au centième.
      */
     public static String truncateAndAdd2Digits( Float a )
@@ -174,7 +179,9 @@ public final class NumberUtils
 
     /**
      * Retourne vrai si la string contient un entier
-     * @param number la string
+     * 
+     * @param number
+     *            la string
      * @return vrai ou faux
      */
     public static boolean validateInt( String number )
@@ -187,7 +194,9 @@ public final class NumberUtils
 
     /**
      * Retourne vrai si la string contient un nombre
-     * @param number le nombre
+     * 
+     * @param number
+     *            le nombre
      * @return vrai ou faux
      */
     public static boolean validateNumber( String number )
@@ -199,9 +208,9 @@ public final class NumberUtils
     }
 
     /**
-     * @param value Valeur à formater.
-     * @return Tente de parser le string en float et le met à zéro si la
-     *         conversion ne fonctionne pas.
+     * @param value
+     *            Valeur à formater.
+     * @return Tente de parser le string en float et le met à zéro si la conversion ne fonctionne pas.
      */
     public static String truncateAndAdd2Digits( String value )
     {
@@ -210,7 +219,7 @@ public final class NumberUtils
         {
             ret = NumberUtils.truncateAndAdd2Digits( Float.parseFloat( value ) );
         }
-        catch ( NumberFormatException e )
+        catch( NumberFormatException e )
         {
             ret = "";
         }

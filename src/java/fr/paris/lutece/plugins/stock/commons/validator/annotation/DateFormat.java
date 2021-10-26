@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.stock.commons.validator.DateFormatValidator;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-
 /**
  * Check if a string match to the specified pattern
  * 
@@ -46,19 +45,22 @@ import javax.validation.Payload;
  */
 @java.lang.annotation.Documented
 @Constraint( validatedBy = DateFormatValidator.class )
-@java.lang.annotation.Target( value = { java.lang.annotation.ElementType.FIELD } )
+@java.lang.annotation.Target( value = {
+        java.lang.annotation.ElementType.FIELD
+} )
 @java.lang.annotation.Retention( value = java.lang.annotation.RetentionPolicy.RUNTIME )
 public @interface DateFormat
 {
 
     String message( ) default "Le format de la date est incorrect";
 
-    Class<?>[] groups( ) default {};
+    Class<?> [ ] groups( ) default { };
 
-    Class<? extends Payload>[] payload( ) default {};
+    Class<? extends Payload> [ ] payload( ) default { };
 
     /**
      * Date format
+     * 
      * @return
      */
     String format( ) default "dd/MM/yyyy";

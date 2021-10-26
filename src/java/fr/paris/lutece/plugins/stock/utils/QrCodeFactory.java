@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,6 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
-
 /**
  * Utility class used for generating qr code image.
  * 
@@ -72,7 +71,8 @@ public final class QrCodeFactory
     /**
      * Generates a qr code image of the provided content.
      * 
-     * @param content string of content contained in qr code
+     * @param content
+     *            string of content contained in qr code
      * @return image of qr code
      */
     public static Image generate( String content )
@@ -82,11 +82,9 @@ public final class QrCodeFactory
             MultiFormatWriter writer = new MultiFormatWriter( );
             HashMap<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>( );
             hints.put( EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q );
-            return MatrixToImageWriter
-.toBufferedImage( writer.encode( content, BarcodeFormat.QR_CODE, QR_CODE_SIZE,
-                    QR_CODE_SIZE, hints ) );
+            return MatrixToImageWriter.toBufferedImage( writer.encode( content, BarcodeFormat.QR_CODE, QR_CODE_SIZE, QR_CODE_SIZE, hints ) );
         }
-        catch ( Exception e )
+        catch( Exception e )
         {
             LOGGER.error( "Erreur lors de la génération d'un qr code : " + e.getMessage( ), e );
         }

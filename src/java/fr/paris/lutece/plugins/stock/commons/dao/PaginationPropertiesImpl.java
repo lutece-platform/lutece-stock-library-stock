@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,6 @@
  */
 package fr.paris.lutece.plugins.stock.commons.dao;
 
-
-
-
 /**
  * Bean used for storing pagination properties (first and last result requested)
  * 
@@ -58,8 +55,10 @@ public class PaginationPropertiesImpl implements PaginationProperties
     /**
      * Creates a new PaginationPropertiesImpl.java object.
      * 
-     * @param firstResult the first result
-     * @param pageSize the page size
+     * @param firstResult
+     *            the first result
+     * @param pageSize
+     *            the page size
      */
     public PaginationPropertiesImpl( int firstResult, int pageSize )
     {
@@ -68,7 +67,9 @@ public class PaginationPropertiesImpl implements PaginationProperties
         this._pageSize = pageSize;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see fr.paris.lutece.plugins.stock.commons.dao.PaginationProperties#getFirstResult()
      */
     /**

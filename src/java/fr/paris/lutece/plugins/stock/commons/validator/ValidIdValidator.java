@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import fr.paris.lutece.plugins.stock.commons.validator.annotation.ValidId;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-
 /**
  * Check if the id is > 0
  * 
@@ -57,14 +56,15 @@ public class ValidIdValidator implements ConstraintValidator<ValidId, AbstractDT
     /*
      * (non-Javadoc)
      * 
-     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object,
-     * javax.validation.ConstraintValidatorContext)
+     * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
      */
     /**
      * Valid if id not null and > 0.
      * 
-     * @param value the value
-     * @param context the context
+     * @param value
+     *            the value
+     * @param context
+     *            the context
      * @return true, if is valid
      */
     public boolean isValid( AbstractDTO<?> value, ConstraintValidatorContext context )
@@ -72,7 +72,7 @@ public class ValidIdValidator implements ConstraintValidator<ValidId, AbstractDT
         boolean valid = true;
         if ( value.getId( ) == null || value.getId( ) <= 0 )
         {
-        	valid = false;
+            valid = false;
         }
         return valid;
     }

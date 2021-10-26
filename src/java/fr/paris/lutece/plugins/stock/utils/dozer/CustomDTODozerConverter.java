@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,26 +44,21 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.dozer.CustomConverter;
 import org.dozer.DozerBeanMapper;
 
-
 /**
- * Convertisseur dozer permettant de convertir un objet dans un DTO vers id et
- * inversement.
- * Permet de gérer le problème des id négatifs et null. Dans ce cas, l'objet
- * n'est pas instancié.
+ * Convertisseur dozer permettant de convertir un objet dans un DTO vers id et inversement. Permet de gérer le problème des id négatifs et null. Dans ce cas,
+ * l'objet n'est pas instancié.
  * 
  * @author aBataille
  */
 public class CustomDTODozerConverter implements CustomConverter
 {
-	@Inject
+    @Inject
     private DozerBeanMapper _dozerMapper;
 
     /**
-     * Convertit un id en entité initialisée avec l'id et inversement.
-     * {@inheritDoc}
+     * Convertit un id en entité initialisée avec l'id et inversement. {@inheritDoc}
      */
-    public Object convert( Object existingDestinationFieldValue, Object sourceFieldValue, Class<?> destinationClass,
-            Class<?> sourceClass )
+    public Object convert( Object existingDestinationFieldValue, Object sourceFieldValue, Class<?> destinationClass, Class<?> sourceClass )
     {
         if ( sourceFieldValue == null )
         {
@@ -82,25 +77,21 @@ public class CustomDTODozerConverter implements CustomConverter
                         return null;
                     }
                 }
-                catch ( NumberFormatException e )
+                catch( NumberFormatException e )
                 {
-                    throw new TechnicalException(
-                            "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
+                    throw new TechnicalException( "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
                 }
-                catch ( IllegalAccessException e )
+                catch( IllegalAccessException e )
                 {
-                    throw new TechnicalException(
-                            "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
+                    throw new TechnicalException( "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
                 }
-                catch ( InvocationTargetException e )
+                catch( InvocationTargetException e )
                 {
-                    throw new TechnicalException(
-                            "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
+                    throw new TechnicalException( "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
                 }
-                catch ( NoSuchMethodException e )
+                catch( NoSuchMethodException e )
                 {
-                    throw new TechnicalException(
-                            "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
+                    throw new TechnicalException( "Problème lors de la conversion d'un " + sourceFieldValue.getClass( ), e );
                 }
             }
             return _dozerMapper.map( sourceFieldValue, destinationClass );

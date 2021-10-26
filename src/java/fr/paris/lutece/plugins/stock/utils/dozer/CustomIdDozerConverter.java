@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,35 +40,30 @@ import javax.inject.Inject;
 import org.dozer.CustomConverter;
 import org.dozer.DozerBeanMapper;
 
-
 /**
- * Convertisseur dozer permettant de convertir un objet dans un DTO vers id et
- * inversement.
- * Permet de gèrer le problème des id négatifs et null. Dans ce cas, l'objet
- * n'est pas instancié.
+ * Convertisseur dozer permettant de convertir un objet dans un DTO vers id et inversement. Permet de gèrer le problème des id négatifs et null. Dans ce cas,
+ * l'objet n'est pas instancié.
  * 
  * @author aBataille
  */
 public class CustomIdDozerConverter implements CustomConverter
 {
-	@Inject
+    @Inject
     private DozerBeanMapper _dozerMapper;
 
     /**
-     * Convertit un id en entité initialisée avec l'id et inversement.
-     * {@inheritDoc}
+     * Convertit un id en entité initialisée avec l'id et inversement. {@inheritDoc}
      */
-    public Object convert( Object existingDestinationFieldValue, Object sourceFieldValue, Class<?> destinationClass,
-            Class<?> sourceClass )
+    public Object convert( Object existingDestinationFieldValue, Object sourceFieldValue, Class<?> destinationClass, Class<?> sourceClass )
     {
         Object retour = null;
         if ( sourceFieldValue != null )
         {
-            //Conversion ID -> entité
+            // Conversion ID -> entité
             if ( sourceClass == Integer.class )
             {
                 Integer id = (Integer) sourceFieldValue;
-                //Si -1 on instancie pas de nouvel objet
+                // Si -1 on instancie pas de nouvel objet
                 if ( id <= 0 )
                 {
                     retour = null;
@@ -88,7 +83,7 @@ public class CustomIdDozerConverter implements CustomConverter
                     retour = entiteDest;
                 }
             }
-            //Conversion entité -> ID
+            // Conversion entité -> ID
             else
             {
                 EntityBean entiteSrc = (EntityBean) sourceFieldValue;

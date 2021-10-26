@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,6 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * Check if a string match to the specified pattern
  * 
@@ -76,7 +75,7 @@ public class DateFormatValidator implements ConstraintValidator<DateFormat, Stri
             {
                 sdf.parse( value );
             }
-            catch ( ParseException e )
+            catch( ParseException e )
             {
                 valid = false;
             }

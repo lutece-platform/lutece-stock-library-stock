@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,12 +36,13 @@ package fr.paris.lutece.plugins.stock.commons.dao;
 import fr.paris.lutece.plugins.stock.commons.ResultList;
 import fr.paris.lutece.util.jpa.IGenericDAO;
 
-
 /**
  * Interface for DAO.
  * 
- * @param <K> the key type
- * @param <E> the element type
+ * @param <K>
+ *            the key type
+ * @param <E>
+ *            the element type
  * @author abataille
  */
 public interface IStockDAO<K, E> extends IGenericDAO<K, E>
@@ -49,7 +50,9 @@ public interface IStockDAO<K, E> extends IGenericDAO<K, E>
 
     /**
      * Return a list of products
-     * @param paginationProperties the pagination properties (may be null)
+     * 
+     * @param paginationProperties
+     *            the pagination properties (may be null)
      * @return list of product
      */
     ResultList<E> findAll( PaginationProperties paginationProperties );

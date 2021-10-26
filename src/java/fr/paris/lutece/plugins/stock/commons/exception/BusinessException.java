@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import fr.paris.lutece.portal.service.i18n.I18nService;
 
 import java.util.Locale;
 
-
 /**
  * Business exception
  * 
@@ -46,13 +45,15 @@ public class BusinessException extends FunctionnalException
 {
     private static final long serialVersionUID = -615983331551016543L;
     private String _code;
-    private String[] _arguments;
+    private String [ ] _arguments;
 
     /**
      * Constructeur de l'exception.
      * 
-     * @param bean the bean
-     * @param code Le code de l'exception
+     * @param bean
+     *            the bean
+     * @param code
+     *            Le code de l'exception
      */
     public BusinessException( Object bean, String code )
     {
@@ -63,9 +64,12 @@ public class BusinessException extends FunctionnalException
     /**
      * Constructeur de l'exception.
      * 
-     * @param bean the bean
-     * @param code Le code de l'exception
-     * @param arguments Les arguments de l'exception
+     * @param bean
+     *            the bean
+     * @param code
+     *            Le code de l'exception
+     * @param arguments
+     *            Les arguments de l'exception
      */
     public BusinessException( Object bean, String code, String... arguments )
     {
@@ -76,6 +80,7 @@ public class BusinessException extends FunctionnalException
 
     /**
      * Récupère le code de l'exception
+     * 
      * @return le code de l'exception
      */
     public String getCode( )
@@ -85,7 +90,9 @@ public class BusinessException extends FunctionnalException
 
     /**
      * Initialise le code de l'exception
-     * @param code le code de l'exception
+     * 
+     * @param code
+     *            le code de l'exception
      */
     public void setCode( String code )
     {
@@ -94,26 +101,29 @@ public class BusinessException extends FunctionnalException
 
     /**
      * Récupère les argumentes de l'exception
+     * 
      * @return les arguments de l'exception
      */
-    public String[] getArguments( )
+    public String [ ] getArguments( )
     {
         return _arguments;
     }
 
     /**
      * Initialise les arguments de l'exception
-     * @param arguments les arguments de l'exception
+     * 
+     * @param arguments
+     *            les arguments de l'exception
      */
-    public void setArguments( String[] arguments )
+    public void setArguments( String [ ] arguments )
     {
         _arguments = arguments;
     }
 
     /**
      * Constructeur de message d'erreur à partir d'une {@link BusinessException}
-     * @return Le tableau de {@link String} contenant les clés i18n des messages
-     *         d'erreurs
+     * 
+     * @return Le tableau de {@link String} contenant les clés i18n des messages d'erreurs
      */
     public String getMessage( )
     {

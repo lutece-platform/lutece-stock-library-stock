@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,8 @@ public class FunctionnalException extends RuntimeException
     /**
      * Instantiates a new functionnal exception.
      * 
-     * @param bean the bean
+     * @param bean
+     *            the bean
      */
     public FunctionnalException( Object bean )
     {
@@ -67,7 +68,8 @@ public class FunctionnalException extends RuntimeException
     }
 
     /**
-     * @param bean the bean to set
+     * @param bean
+     *            the bean to set
      */
     public void setBean( Object bean )
     {

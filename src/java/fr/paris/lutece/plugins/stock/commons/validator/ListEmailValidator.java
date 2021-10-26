@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,6 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * Check if a string match to an email list
  * 
@@ -56,14 +55,8 @@ public class ListEmailValidator implements ConstraintValidator<ListEmail, String
     private static final String IP_DOMAIN = "\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
     private static final String PROPERTY_MAIL_SEPARATOR = "mail.list.separator";
 
-	private java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(
-			"^" + ATOM + "+(\\." + ATOM + "+)*@"
-					+ DOMAIN
-					+ "|"
-					+ IP_DOMAIN
-					+ ")$",
-			java.util.regex.Pattern.CASE_INSENSITIVE
-	);
+    private java.util.regex.Pattern pattern = java.util.regex.Pattern.compile( "^" + ATOM + "+(\\." + ATOM + "+)*@" + DOMAIN + "|" + IP_DOMAIN + ")$",
+            java.util.regex.Pattern.CASE_INSENSITIVE );
 
     /**
      * {@inheritDoc}
@@ -80,16 +73,16 @@ public class ListEmailValidator implements ConstraintValidator<ListEmail, String
         boolean valid = true;
         if ( StringUtils.isNotEmpty( value ) )
         {
-        	String[] listEmail = value.split( AppPropertiesService.getProperty( PROPERTY_MAIL_SEPARATOR ) );
+            String [ ] listEmail = value.split( AppPropertiesService.getProperty( PROPERTY_MAIL_SEPARATOR ) );
 
             for ( String email : listEmail )
             {
-        		Matcher m = pattern.matcher( email.trim( ) );
-        		if ( !m.matches( ) )
-        		{
-        			valid = false;
-        		}
-        	}
+                Matcher m = pattern.matcher( email.trim( ) );
+                if ( !m.matches( ) )
+                {
+                    valid = false;
+                }
+            }
         }
         return valid;
     }

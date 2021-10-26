@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,10 +35,11 @@ package fr.paris.lutece.plugins.stock.commons;
 
 import java.util.ArrayList;
 
-
 /**
  * Extension de l'objet ArrayList pour fournir des informations supplémentaires
- * @param <E> le type de l'entité
+ * 
+ * @param <E>
+ *            le type de l'entité
  */
 public class ResultList<E> extends ArrayList<E>
 {
@@ -50,6 +51,7 @@ public class ResultList<E> extends ArrayList<E>
 
     /**
      * Retourne le nombre total de résultats
+     * 
      * @return le nombre total de résultats
      */
     public int getTotalResult( )
@@ -59,7 +61,9 @@ public class ResultList<E> extends ArrayList<E>
 
     /**
      * Initialise le nombre total de résultats
-     * @param totalResult le nombre total de résultats
+     * 
+     * @param totalResult
+     *            le nombre total de résultats
      */
     public void setTotalResult( int totalResult )
     {

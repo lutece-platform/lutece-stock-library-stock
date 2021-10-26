@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,6 @@ import java.io.OutputStream;
 
 import org.apache.commons.io.FilenameUtils;
 
-
 /**
  * The Class FileUtils.
  */
@@ -58,17 +57,21 @@ public class FileUtils
     {
 
     }
+
     /**
      * Write content from input stream to the disk.
-     * @param is input stream
-     * @param file file where data will be stored
+     * 
+     * @param is
+     *            input stream
+     * @param file
+     *            file where data will be stored
      */
     public static void writeInputStreamToFile( InputStream is, File file )
     {
         try
         {
             OutputStream out = new FileOutputStream( file );
-            byte[] buf = new byte[1024];
+            byte [ ] buf = new byte [ 1024];
             int len;
             while ( ( len = is.read( buf ) ) > 0 )
             {
@@ -77,17 +80,17 @@ public class FileUtils
             out.close( );
             is.close( );
         }
-        catch ( IOException e )
+        catch( IOException e )
         {
             throw new TechnicalException( "Erreur lors de l'écriture du flux dans le fichier " + file.getName( ), e );
         }
     }
 
     /**
-     * If file exists, generate a file with non existing file name (for example
-     * fileexist-1.jpg)
+     * If file exists, generate a file with non existing file name (for example fileexist-1.jpg)
      * 
-     * @param file file to rename
+     * @param file
+     *            file to rename
      * @return the unique file
      */
     public static File getUniqueFile( File file )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,9 @@
  */
 package fr.paris.lutece.plugins.stock.utils;
 
-
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.lang.StringUtils;
-
 
 /**
  * Converter of {@link Integer}. Set null if empty string is provided.
@@ -49,8 +47,7 @@ public class IntegerConverter implements Converter
     /*
      * (non-Javadoc)
      * 
-     * @see org.apache.commons.beanutils.Converter#convert(java.lang.Class,
-     * java.lang.Object)
+     * @see org.apache.commons.beanutils.Converter#convert(java.lang.Class, java.lang.Object)
      */
     /**
      * {@inheritDoc}
@@ -68,7 +65,7 @@ public class IntegerConverter implements Converter
                     {
                         return Integer.valueOf( sValue );
                     }
-                    catch ( Exception e )
+                    catch( Exception e )
                     {
                         return null;
                     }

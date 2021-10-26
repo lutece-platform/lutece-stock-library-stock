@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,14 +33,12 @@
  */
 package fr.paris.lutece.plugins.stock.utils;
 
-
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.Converter;
-
 
 /**
  * Convertisseu de {@link Timestamp}
@@ -50,11 +48,12 @@ public class TimestampConverter implements Converter
 {
     /**
      * Méthode permettant de convertir une date d'un type à l'autre
-     * @param type Type de la date passée en paramètre
-     *            Les types suivants peuvent être précisés :
-     *            - {@link String} - {@link Timestamp} - {@link Date} -
+     * 
+     * @param type
+     *            Type de la date passée en paramètre Les types suivants peuvent être précisés : - {@link String} - {@link Timestamp} - {@link Date} -
      *            {@link Calendar}
-     * @param value date à convertir en {@link Timestamp}
+     * @param value
+     *            date à convertir en {@link Timestamp}
      * @return une date de type {@link Timestamp} ou null en cas d'erreur
      */
     public Object convert( Class type, Object value ) throws ConversionException
@@ -84,14 +83,16 @@ public class TimestampConverter implements Converter
             {
                 return value;
             }
-            else if ( value instanceof Date )
-            {
-                return new Timestamp( ( (Date) value ).getTime( ) );
-            }
-            else if ( value instanceof Calendar )
-            {
-                return new Timestamp( ( (Calendar) value ).getTime( ).getTime( ) );
-            }
+            else
+                if ( value instanceof Date )
+                {
+                    return new Timestamp( ( (Date) value ).getTime( ) );
+                }
+                else
+                    if ( value instanceof Calendar )
+                    {
+                        return new Timestamp( ( (Calendar) value ).getTime( ).getTime( ) );
+                    }
         }
 
         return null;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,6 @@ package fr.paris.lutece.plugins.stock.utils;
 
 import java.sql.Timestamp;
 
-
 /**
  * Validateur de {@link Timestamp}
  * 
@@ -49,7 +48,9 @@ public class TimestampValidation extends Timestamp
 
     /**
      * Constructeur de la classe
-     * @param strErrorValue La valeur de l'erreur
+     * 
+     * @param strErrorValue
+     *            La valeur de l'erreur
      */
     public TimestampValidation( String strErrorValue )
     {
@@ -59,13 +60,21 @@ public class TimestampValidation extends Timestamp
 
     /**
      * Constructeur de la classe
-     * @param arg0 Argument 1
-     * @param arg1 Argument 2
-     * @param arg2 Argument 3
-     * @param arg3 Argument 4
-     * @param arg4 Argument 5
-     * @param arg5 Argument 6
-     * @param arg6 Argument 7
+     * 
+     * @param arg0
+     *            Argument 1
+     * @param arg1
+     *            Argument 2
+     * @param arg2
+     *            Argument 3
+     * @param arg3
+     *            Argument 4
+     * @param arg4
+     *            Argument 5
+     * @param arg5
+     *            Argument 6
+     * @param arg6
+     *            Argument 7
      * @deprecated
      */
     public TimestampValidation( int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6 )
@@ -75,6 +84,7 @@ public class TimestampValidation extends Timestamp
 
     /**
      * Retourne l'id du type de l'erreur
+     * 
      * @return l'id du type de l'erreur
      */
     public int getIdTypeError( )
@@ -84,7 +94,9 @@ public class TimestampValidation extends Timestamp
 
     /**
      * Initialise l'id du type de l'erreur
-     * @param nIdTypeEror l'id du type de l'erreur
+     * 
+     * @param nIdTypeEror
+     *            l'id du type de l'erreur
      */
     public void setIdTypeError( int nIdTypeEror )
     {
@@ -93,6 +105,7 @@ public class TimestampValidation extends Timestamp
 
     /**
      * Retourne la valeur de l'erreur
+     * 
      * @return la valeur de l'erreur
      */
     public String getErrorValue( )
@@ -102,7 +115,9 @@ public class TimestampValidation extends Timestamp
 
     /**
      * Initialise la valeur de l'erreur
-     * @param strErrorValue La valeur de l'erreur
+     * 
+     * @param strErrorValue
+     *            La valeur de l'erreur
      */
     public void setErrorValue( String strErrorValue )
     {

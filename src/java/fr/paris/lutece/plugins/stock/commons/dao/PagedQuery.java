@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,6 @@ import javax.persistence.Parameter;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
-
 /**
  * Adaptater for paginated query.
  * 
@@ -67,9 +66,12 @@ public class PagedQuery implements Query
     /**
      * Creates a new PaginatedQuery.java object.
      * 
-     * @param query query for getting results
-     * @param countQuery query for counting total result
-     * @param paginationProperties the pagination properties
+     * @param query
+     *            query for getting results
+     * @param countQuery
+     *            query for counting total result
+     * @param paginationProperties
+     *            the pagination properties
      */
     public PagedQuery( Query query, Query countQuery, PaginationProperties paginationProperties )
     {
@@ -77,15 +79,17 @@ public class PagedQuery implements Query
         this._query = query;
         this._countQuery = countQuery;
         this._paginationProperties = paginationProperties;
-        
+
         if ( this._paginationProperties != null )
         {
             this._query.setMaxResults( this._paginationProperties.getPageSize( ) );
-	        this._query.setFirstResult( this._paginationProperties.getFirstResult( ) );
+            this._query.setFirstResult( this._paginationProperties.getFirstResult( ) );
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getResultList()
      */
     public ResultList getResultList( )
@@ -101,7 +105,9 @@ public class PagedQuery implements Query
         return resultList;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getSingleResult()
      */
     public Object getSingleResult( )
@@ -109,7 +115,9 @@ public class PagedQuery implements Query
         return _query.getSingleResult( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#executeUpdate()
      */
     public int executeUpdate( )
@@ -117,7 +125,9 @@ public class PagedQuery implements Query
         return _query.executeUpdate( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setMaxResults(int)
      */
     public Query setMaxResults( int maxResult )
@@ -125,7 +135,9 @@ public class PagedQuery implements Query
         return _query.setMaxResults( maxResult );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getMaxResults()
      */
     public int getMaxResults( )
@@ -133,7 +145,9 @@ public class PagedQuery implements Query
         return _query.getMaxResults( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setFirstResult(int)
      */
     public Query setFirstResult( int startPosition )
@@ -141,7 +155,9 @@ public class PagedQuery implements Query
         return _query.setFirstResult( startPosition );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getFirstResult()
      */
     public int getFirstResult( )
@@ -149,7 +165,9 @@ public class PagedQuery implements Query
         return _query.getFirstResult( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setHint(java.lang.String, java.lang.Object)
      */
     public Query setHint( String hintName, Object value )
@@ -157,7 +175,9 @@ public class PagedQuery implements Query
         return _query.setHint( hintName, value );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getHints()
      */
     public Map<String, Object> getHints( )
@@ -165,7 +185,9 @@ public class PagedQuery implements Query
         return _query.getHints( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(javax.persistence.Parameter, java.lang.Object)
      */
     public <T> Query setParameter( Parameter<T> param, T value )
@@ -173,7 +195,9 @@ public class PagedQuery implements Query
         return _query.setParameter( param, value );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(javax.persistence.Parameter, java.util.Calendar, javax.persistence.TemporalType)
      */
     public Query setParameter( Parameter<Calendar> param, Calendar value, TemporalType temporalType )
@@ -181,7 +205,9 @@ public class PagedQuery implements Query
         return _query.setParameter( param, value, temporalType );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(javax.persistence.Parameter, java.util.Date, javax.persistence.TemporalType)
      */
     public Query setParameter( Parameter<Date> param, Date value, TemporalType temporalType )
@@ -189,7 +215,9 @@ public class PagedQuery implements Query
         return _query.setParameter( param, value, temporalType );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(java.lang.String, java.lang.Object)
      */
     public Query setParameter( String name, Object value )
@@ -197,7 +225,9 @@ public class PagedQuery implements Query
         return _query.setParameter( name, value );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(java.lang.String, java.util.Calendar, javax.persistence.TemporalType)
      */
     public Query setParameter( String name, Calendar value, TemporalType temporalType )
@@ -205,7 +235,9 @@ public class PagedQuery implements Query
         return _query.setParameter( name, value, temporalType );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(java.lang.String, java.util.Date, javax.persistence.TemporalType)
      */
     public Query setParameter( String name, Date value, TemporalType temporalType )
@@ -213,7 +245,9 @@ public class PagedQuery implements Query
         return _query.setParameter( name, value, temporalType );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(int, java.lang.Object)
      */
     public Query setParameter( int position, Object value )
@@ -221,7 +255,9 @@ public class PagedQuery implements Query
         return _query.setParameter( position, value );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(int, java.util.Calendar, javax.persistence.TemporalType)
      */
     public Query setParameter( int position, Calendar value, TemporalType temporalType )
@@ -229,7 +265,9 @@ public class PagedQuery implements Query
         return _query.setParameter( position, value, temporalType );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setParameter(int, java.util.Date, javax.persistence.TemporalType)
      */
     public Query setParameter( int position, Date value, TemporalType temporalType )
@@ -237,7 +275,9 @@ public class PagedQuery implements Query
         return _query.setParameter( position, value, temporalType );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameters()
      */
     public Set<Parameter<?>> getParameters( )
@@ -245,7 +285,9 @@ public class PagedQuery implements Query
         return _query.getParameters( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameter(java.lang.String)
      */
     public Parameter<?> getParameter( String name )
@@ -253,7 +295,9 @@ public class PagedQuery implements Query
         return _query.getParameter( name );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameter(java.lang.String, java.lang.Class)
      */
     public <T> Parameter<T> getParameter( String name, Class<T> type )
@@ -261,7 +305,9 @@ public class PagedQuery implements Query
         return _query.getParameter( name, type );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameter(int)
      */
     public Parameter<?> getParameter( int position )
@@ -269,7 +315,9 @@ public class PagedQuery implements Query
         return _query.getParameter( position );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameter(int, java.lang.Class)
      */
     public <T> Parameter<T> getParameter( int position, Class<T> type )
@@ -277,7 +325,9 @@ public class PagedQuery implements Query
         return _query.getParameter( position, type );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#isBound(javax.persistence.Parameter)
      */
     public boolean isBound( Parameter<?> param )
@@ -285,7 +335,9 @@ public class PagedQuery implements Query
         return _query.isBound( param );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameterValue(javax.persistence.Parameter)
      */
     public <T> T getParameterValue( Parameter<T> param )
@@ -293,7 +345,9 @@ public class PagedQuery implements Query
         return _query.getParameterValue( param );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameterValue(java.lang.String)
      */
     public Object getParameterValue( String name )
@@ -301,7 +355,9 @@ public class PagedQuery implements Query
         return _query.getParameterValue( name );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getParameterValue(int)
      */
     public Object getParameterValue( int position )
@@ -309,7 +365,9 @@ public class PagedQuery implements Query
         return _query.getParameterValue( position );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setFlushMode(javax.persistence.FlushModeType)
      */
     public Query setFlushMode( FlushModeType flushMode )
@@ -317,7 +375,9 @@ public class PagedQuery implements Query
         return _query.setFlushMode( flushMode );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getFlushMode()
      */
     public FlushModeType getFlushMode( )
@@ -325,7 +385,9 @@ public class PagedQuery implements Query
         return _query.getFlushMode( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#setLockMode(javax.persistence.LockModeType)
      */
     public Query setLockMode( LockModeType lockMode )
@@ -333,7 +395,9 @@ public class PagedQuery implements Query
         return _query.setLockMode( lockMode );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#getLockMode()
      */
     public LockModeType getLockMode( )
@@ -341,7 +405,9 @@ public class PagedQuery implements Query
         return _query.getLockMode( );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javax.persistence.Query#unwrap(java.lang.Class)
      */
     public <T> T unwrap( Class<T> cls )
@@ -362,7 +428,8 @@ public class PagedQuery implements Query
     /**
      * Sets the query.
      * 
-     * @param query the query to set
+     * @param query
+     *            the query to set
      */
     public void setQuery( Query query )
     {

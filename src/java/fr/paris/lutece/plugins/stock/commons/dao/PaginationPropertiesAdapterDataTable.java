@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,9 @@ public class PaginationPropertiesAdapterDataTable extends PaginationPropertiesIm
 {
     /**
      * Adapter constructor
-     * @param p the pagination object given by DataTableManager
+     * 
+     * @param p
+     *            the pagination object given by DataTableManager
      */
     public PaginationPropertiesAdapterDataTable( DataTablePaginationProperties p )
     {

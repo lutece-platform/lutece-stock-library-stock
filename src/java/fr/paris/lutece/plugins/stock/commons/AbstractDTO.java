@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,11 +41,11 @@ import java.util.List;
 
 import org.dozer.Mapper;
 
-
 /**
  * Classe abstraite des DTO.
  * 
- * @param <E> the element type
+ * @param <E>
+ *            the element type
  * @author abataille
  */
 public abstract class AbstractDTO<E>
@@ -62,15 +62,16 @@ public abstract class AbstractDTO<E>
 
     /**
      * Returns id
+     * 
      * @return id
      */
     public abstract Integer getId( );
 
-
     /**
      * Convert entity list to DTO list.
      * 
-     * @param listSource the list source
+     * @param listSource
+     *            the list source
      * @return the list
      */
     public List<E> convertList( Collection<? extends AbstractDTO<E>> listSource )

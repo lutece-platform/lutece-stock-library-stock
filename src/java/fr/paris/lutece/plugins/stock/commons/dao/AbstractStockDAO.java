@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,12 +44,13 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-
 /**
  * Abstract class for stock DAO.
  * 
- * @param <K> the key type
- * @param <E> the entity type
+ * @param <K>
+ *            the key type
+ * @param <E>
+ *            the entity type
  * @author abataille
  */
 public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
@@ -58,9 +59,12 @@ public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
     /**
      * Generate count query from criteria query and return a paged query.
      * 
-     * @param <T> the generic type of criteria query
-     * @param criteriaQuery criteria query
-     * @param paginationProperties pagination data
+     * @param <T>
+     *            the generic type of criteria query
+     * @param criteriaQuery
+     *            criteria query
+     * @param paginationProperties
+     *            pagination data
      * @return query paged
      */
     protected <T> PagedQuery createPagedQuery( CriteriaQuery<T> criteriaQuery, PaginationProperties paginationProperties )
@@ -74,11 +78,11 @@ public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
         // Rebuild the roots if
         // if ( cq.getRoots( ).size( ) > 1 )
         // {
-            countQuery.getRoots( ).clear( );
-            for ( Root<?> root : criteriaQuery.getRoots( ) )
-            {
-                countQuery.getRoots( ).add( root );
-            }
+        countQuery.getRoots( ).clear( );
+        for ( Root<?> root : criteriaQuery.getRoots( ) )
+        {
+            countQuery.getRoots( ).add( root );
+        }
         // }
         if ( criteriaQuery.getRestriction( ) != null )
         {
@@ -86,8 +90,7 @@ public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
         }
 
         // Create the paged query
-        PagedQuery pq = new PagedQuery( em.createQuery( criteriaQuery ), em.createQuery( countQuery ),
-                paginationProperties );
+        PagedQuery pq = new PagedQuery( em.createQuery( criteriaQuery ), em.createQuery( countQuery ), paginationProperties );
 
         return pq;
     }
@@ -95,7 +98,8 @@ public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
     /**
      * Return all entities paged.
      * 
-     * @param paginationProperties properties for pagination
+     * @param paginationProperties
+     *            properties for pagination
      * @return the result list
      */
     public ResultList<E> findAll( PaginationProperties paginationProperties )
@@ -111,8 +115,11 @@ public abstract class AbstractStockDAO<K, E> extends JPALuteceDAO<K, E>
 
     /**
      * Add a predicate to an existing query
-     * @param query existing query
-     * @param exp restriction
+     * 
+     * @param query
+     *            existing query
+     * @param exp
+     *            restriction
      */
     protected void addRestriction( CriteriaQuery<?> query, Expression<Boolean> exp )
     {

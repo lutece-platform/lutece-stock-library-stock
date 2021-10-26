@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,6 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * Check if the date is after the current date
  * 
@@ -70,9 +69,9 @@ public class AfterCurrentDateValidator implements ConstraintValidator<AfterCurre
         boolean valid = true;
         if ( StringUtils.isNotEmpty( value ) && DateUtils.validateDate( value ) )
         {
-        	if ( DateUtils.getDate( value, false ).before( DateUtils.getCurrentDate( ) ) )
-        	{
-        		valid = false;
+            if ( DateUtils.getDate( value, false ).before( DateUtils.getCurrentDate( ) ) )
+            {
+                valid = false;
             }
         }
         return valid;

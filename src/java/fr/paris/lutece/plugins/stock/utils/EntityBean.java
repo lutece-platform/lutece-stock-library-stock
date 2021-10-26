@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,8 @@ public interface EntityBean
     /**
      * Sets the id.
      * 
-     * @param id the new id
+     * @param id
+     *            the new id
      */
     void setId( Integer id );
 }

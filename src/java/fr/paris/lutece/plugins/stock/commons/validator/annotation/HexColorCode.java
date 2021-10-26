@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,6 @@ import fr.paris.lutece.plugins.stock.commons.validator.HexColorCodeValidator;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-
 /**
  * 
  * Validator annotation for hexadecimal formated color codes
@@ -46,7 +45,9 @@ import javax.validation.Payload;
  */
 @java.lang.annotation.Documented
 @Constraint( validatedBy = HexColorCodeValidator.class )
-@java.lang.annotation.Target( value = { java.lang.annotation.ElementType.FIELD } )
+@java.lang.annotation.Target( value = {
+        java.lang.annotation.ElementType.FIELD
+} )
 @java.lang.annotation.Retention( value = java.lang.annotation.RetentionPolicy.RUNTIME )
 public @interface HexColorCode
 {
@@ -54,9 +55,9 @@ public @interface HexColorCode
     String message( ) default "Le code couleur n'est pas au format hexadécimal (ex : #C6C6C6)";
 
     /** group */
-    Class<?>[] groups( ) default {};
+    Class<?> [ ] groups( ) default { };
 
     /** payload */
-    Class<? extends Payload>[] payload( ) default {};
+    Class<? extends Payload> [ ] payload( ) default { };
 
 }

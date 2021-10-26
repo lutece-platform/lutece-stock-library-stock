@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,6 @@ import javax.imageio.ImageIO;
 import org.apache.log4j.Logger;
 import org.imgscalr.Scalr;
 
-
 /**
  * Class for manipulating images
  * 
@@ -63,13 +62,16 @@ public final class ImageUtils
     }
 
     /**
-     * Create a thumbnail and write it into a new file prefixed by tb_
-     * (images/lutece.jpg => images/lutece_tb.jpg)
+     * Create a thumbnail and write it into a new file prefixed by tb_ (images/lutece.jpg => images/lutece_tb.jpg)
      * 
-     * @param fImage source image file
-     * @param width max width of the thumbnail
-     * @param height the height
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @param fImage
+     *            source image file
+     * @param width
+     *            max width of the thumbnail
+     * @param height
+     *            the height
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     public static File createThumbnail( File fImage, int width, int height ) throws IOException
     {
@@ -81,12 +83,17 @@ public final class ImageUtils
 
     /**
      * 
-     * @param fImage source image file
-     * @param width the max width for the image
-     * @param height the max height for the image
-     * @param newName the new name for the image, can be null to keep old name
+     * @param fImage
+     *            source image file
+     * @param width
+     *            the max width for the image
+     * @param height
+     *            the max height for the image
+     * @param newName
+     *            the new name for the image, can be null to keep old name
      * @return the image with limit dimensions
-     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     public static File resizeImage( File fImage, int maxWidth, int maxHeight, String newName ) throws IOException
     {
@@ -99,8 +106,7 @@ public final class ImageUtils
         }
         else
         {
-            LOGGER.debug( "Image " + fImage.getName( ) + " non redimensionnée car déjà plus petite que " + maxWidth
-                    + "x" + maxHeight );
+            LOGGER.debug( "Image " + fImage.getName( ) + " non redimensionnée car déjà plus petite que " + maxWidth + "x" + maxHeight );
             resizedImage = image;
         }
 

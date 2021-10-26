@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2014, Mairie de Paris
+ * Copyright (c) 2002-2021, City of Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,6 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
-
 /**
  * Utilitaire servant à la manipulation des listes.
  */
@@ -62,17 +61,17 @@ public final class ListUtils
     }
 
     /**
-     * Conversion d'une liste de type {@link List} vers une
-     * {@link ReferenceList}
-     * @param list la liste à convertir
-     * @param key la valeur de la propriété du bean servant de clé dans la
-     *            {@link ReferenceList}
-     * @param value la valeur de la propriété du bean servant de valeur dans la
-     *            {@link ReferenceList}
-     * @param firstItem valeur de la première ligne dans la
-     *            {@link ReferenceList} (exemple, en vue d'afficher la
-     *            ReferenceList dans une liste déroulante :
-     *            " -- Sélectionnez une valeur --").
+     * Conversion d'une liste de type {@link List} vers une {@link ReferenceList}
+     * 
+     * @param list
+     *            la liste à convertir
+     * @param key
+     *            la valeur de la propriété du bean servant de clé dans la {@link ReferenceList}
+     * @param value
+     *            la valeur de la propriété du bean servant de valeur dans la {@link ReferenceList}
+     * @param firstItem
+     *            valeur de la première ligne dans la {@link ReferenceList} (exemple, en vue d'afficher la ReferenceList dans une liste déroulante : " --
+     *            Sélectionnez une valeur --").
      * @return La {@link ReferenceList} peuplée avec les données de la Liste
      */
     public static ReferenceList toReferenceList( List<?> list, String key, String value, String firstItem )
@@ -95,19 +94,19 @@ public final class ListUtils
                 referenceList.addItem( valeurKey, valeurValue );
             }
         }
-        catch ( IllegalAccessException e )
+        catch( IllegalAccessException e )
         {
             LOGGER.warn( "Erreur lors de la création d'une liste pour combo : " + e.getMessage( ), e );
         }
-        catch ( InvocationTargetException e )
+        catch( InvocationTargetException e )
         {
             LOGGER.warn( "Erreur lors de la création d'une liste pour combo : " + e.getMessage( ), e );
         }
-        catch ( NoSuchMethodException e )
+        catch( NoSuchMethodException e )
         {
             LOGGER.warn( "Erreur lors de la création d'une liste pour combo : " + e.getMessage( ), e );
         }
-        catch ( Exception e )
+        catch( Exception e )
         {
             LOGGER.warn( "Erreur lors de la création d'une liste pour combo : " + e.getMessage( ), e );
         }
@@ -118,7 +117,8 @@ public final class ListUtils
     /**
      * Return.
      * 
-     * @param propertyKey the property key
+     * @param propertyKey
+     *            the property key
      * @return the property list
      */
     public static List<String> getPropertyList( String propertyKey )
@@ -126,7 +126,7 @@ public final class ListUtils
         String property = AppPropertiesService.getProperty( propertyKey );
         if ( property != null )
         {
-            String[] items = property.split( PROPERTY_LIST_SEPARATOR );
+            String [ ] items = property.split( PROPERTY_LIST_SEPARATOR );
             if ( items != null )
             {
                 return Arrays.asList( items );
